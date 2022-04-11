@@ -1,0 +1,107 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'NanumSquareR';
+	src: url("../fonts/NanumSquareR.eot");
+	src: local("NanumSquareR"), url("../fonts/NanumSquareR.eot?#iefix") format("embedded-opentype"), url("../fonts/NanumSquareR.woff") format("woff"), url("../fonts/NanumSquareR.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: 'NanumSquareOTFR';
+	src: url("../fonts/NanumSquareOTFRegular.eot");
+	src: local("NanumSquareOTFR"), url("../fonts/NanumSquareOTFRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/NanumSquareOTFRegular.woff") format("woff"), url("../fonts/NanumSquareOTFRegular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: 'NanumSquareOTFB';
+	src: url("../fonts/NanumSquareOTFBold.eot");
+	src: local("NanumSquareOTFB"), url("../fonts/NanumSquareOTFBold.eot?#iefix") format("embedded-opentype"), url("../fonts/NanumSquareOTFBold.woff") format("woff"), url("../fonts/NanumSquareOTFBold.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: 'NanumSquareOTFEB';
+	src: url("../fonts/NanumSquareOTFExtraBold.eot");
+	src: local("NanumSquareOTFEB"), url("../fonts/NanumSquareOTFExtraBold.eot?#iefix") format("embedded-opentype"), url("../fonts/NanumSquareOTFExtraBold.woff") format("woff"), url("../fonts/NanumSquareOTFExtraBold.ttf") format("truetype");
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+ul, ol, dl, dd, input {
+	margin: 0;
+	padding: 0;
+	line-height: 1.4;
+	font-family: 'NanumSquareOTFR', 'NanumSquareR', '나눔스퀘어',sans-serif;
+}
+
+html, body {
+	min-height: 100%;
+}
+
+ul, ol {
+	list-style: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+em {
+	font-style: normal;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+}
+
+em {
+	font-style: normal;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+fieldset {
+	border: 0;
+}
+
+button {
+	background: none;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	overflow: visible;
+	cursor: pointer;
+}
+
+.blind {
+	position: absolute;
+	clip: rect(0 0 0 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+}
+
+.link {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+strong {
+	font-family: 'NanumSquareOTFB';
+}
+
+/*# sourceMappingURL=shamahpotchi_project.css.map */

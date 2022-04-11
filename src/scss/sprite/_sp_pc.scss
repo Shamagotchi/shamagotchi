@@ -1,0 +1,22 @@
+
+// Sprites Map
+$sp_pc: (
+	name: 'sp_pc',
+	width: 150px,
+	height: 80px,
+	image: '../img/sp_pc.png',
+	sprites: (
+	logo_ico: (
+			offset-x: 0px,
+			offset-y: 0px,
+			width: 80px,
+			height: 80px,
+		),
+		share_bt: (
+			offset-x: -90px,
+			offset-y: 0px,
+			width: 60px,
+			height: 60px,
+		),
+	)
+);
