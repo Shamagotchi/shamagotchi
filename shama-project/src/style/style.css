@@ -21,15 +21,19 @@ body{
 }
 
 .device{
+    display: flex;
+    justify-content: center;
     position: relative;
     margin: 0 auto;
-    width: 800px;
+    height: 100%;
     box-sizing: border-box;
     text-align: center;
 }
 
 .device .imgWrap{
-    padding: 10% 0;
+    height: 100%;
+    padding: 5% 0 10%;
+    box-sizing: border-box;
 }
 
 
@@ -38,6 +42,8 @@ body{
     z-index: 2;
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -46,10 +52,10 @@ body{
     z-index: 1;
     left: 50%;
     top: 50%;
-    width: 507px;
-    height: 46%;
-    margin-left: -8px;
-    margin-top: -3%;
+    width: 26%;
+    height: 42%;
+    margin-left: -4px;
+    margin-top: -1%;
     transform: translate(-50%,-50%);
     background-color:  #5e714b;
 }
@@ -57,9 +63,11 @@ body{
 .screen .comingSoon{
     position: relative;
     top:20%;
+    width: 80%;
     height: 0;
+    margin: 0 auto;
     background: url(../img/comingsoon.png) no-repeat 0 0;
-    background-size: cover;
+    background-size: contain;
 }
 
 .screen .comingSoon.active{
@@ -225,29 +233,32 @@ body{
 
 
 @media (min-width: 768px) and (max-width: 1123px){
-    .device{
+    /* .device{
         width: 700px;
     }
-    
     .device .screen{
         width: 445px;
         margin-left: -6px;
-    }
+    } */
     .pin .text{
         font-size: 28px;
     }
 }
 
 @media (max-width: 767px){
-    .device{
+    /* .device{
         width: 100%;
+        height: auto;
         max-width: 600px;
+    } */
+    .device img{
+        width: 80%;
+        height: auto;
     }
-
-    .device .screen{
+    /* .device .screen{
         width: 64%;
         margin-left: -4px;
-    }    
+    }     */
     .pin .text{
         font-size: 19px;
     }
