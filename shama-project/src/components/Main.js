@@ -1,12 +1,12 @@
-import React from 'react';
-// import Intro from './Intro'
+import React, { useState } from 'react';
+import Screen from './Screen'
 
 
-const main = () => {
+const Main = () => {
     const FrontImage = require('./../img/front.png')
-    const PinCondition = false
-    const RemovePin = () => {
-        !PinCondition
+    const [isActive, setIsActive] = useState(false)
+    const ToggleClass = () => {
+        setIsActive(!isActive)
     }
     return (
         <div className="wrapper">
@@ -14,13 +14,12 @@ const main = () => {
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" alt="다마고치"/>
-                    <div className="screen">
-                    </div>
+                    <Screen ToggleClass={ToggleClass} isActive={isActive}/>
                 </div>
-                <button type="button" className="pin " onClick={RemovePin}><span className="text">PULL</span></button>
+                <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
             </div>
         </div>
     );
 };
 
-export default main;
+export default Main;
