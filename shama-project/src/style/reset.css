@@ -27,6 +27,9 @@ body {
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
+img{
+    vertical-align: top;
+}
 
 img, fieldset {
     border: 0
