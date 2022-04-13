@@ -20,8 +20,8 @@ const Main = () => {
                         <button type="button" className="btn_02"></button>
                         <button type="button" className="btn_03"></button>
                     </div> */}
+                    <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
                 </div>
-                <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
             </div>
         </div>
     );
