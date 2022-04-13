@@ -235,10 +235,37 @@ body{
     cursor: pointer;
 }
 
-@media (max-width: 1123px){
-    .device .imgWrap{
-        height: auto;
-    }
+.controlBtn_wrap{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6%;
+    height: 19%;
+    z-index: 10;
+}
+
+.controlBtn_wrap button{
+    position: absolute;
+    top: 8%;
+    left: 21%;
+    width: 14%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    background: url(../img/btn1.png) no-repeat 0 0; 
+    background-size: 100%;
+}
+.controlBtn_wrap button.btn_02{
+    left: 42.7%;
+    top: 29%;
+    aspect-ratio: 243 / 244;
+    background: url(../img/btn2.png) no-repeat 0 0; 
+    background-size: 100%;
+}
+.controlBtn_wrap button.btn_03{
+    left: 63.6%;
+    top: 10%;
+    background: url(../img/btn3.png) no-repeat 0 0; 
+    background-size: 100%;
 }
 
 
@@ -262,3 +289,5 @@ body{
     }
 
 }
+
+@media (orientation)
