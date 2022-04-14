@@ -247,25 +247,27 @@ body{
     z-index: 0;
     left: 42%;
     right: 42%;
-    top: 81%;
+    top: 89%;
     bottom: 0;
     margin: 0 auto;
     background: url(./../img/pin.png) no-repeat 0 0;
     background-size: 100% auto;
-    aspect-ratio: 145 / 317;
+    aspect-ratio: 145 / 234;
+    user-select: none;
 }
 
 .device .pin:hover{
-    animation: movingLR 0.3s infinite both;
-    -webkit-animation: movingLR 0.3s infinite both;
+    /* animation: movingLR 0.3s infinite both;
+    -webkit-animation: movingLR 0.3s infinite both; */
 }
 
 .pin .text{
     position: absolute;
-    bottom: 17%;
+    bottom: 21%;
     left: 0;
     right: 0;
     font-size: 1.3rem;
+    line-height: 1.5rem;
     font-weight: 600;
     cursor: pointer;
 }
@@ -322,10 +324,10 @@ body{
 @media (max-width: 767px){
 }
 
-@media (max-width: 360px){
+@media (max-width: 360px), (orientation: landscape){
     
     .pin .text{
         font-size: 14px;
-        bottom: 17%;
+        bottom: 15%;
     }
 }

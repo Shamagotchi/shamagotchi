@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Screen from './Screen'
+import Draggable from 'react-draggable'
 
 
 const Main = () => {
@@ -10,6 +11,12 @@ const Main = () => {
             setIsActive(!isActive)
         }
     }
+    const [position, setPosition] = useState({ y: 0 });
+    // 업데이트 되는 값을 set 해줌
+    const trackPos = (data,bounds) => {
+        setPosition({ y: data.y }); 
+        ToggleClass()
+    };
     return (
         <div className="wrapper">
             {/* <Intro/> */}
@@ -22,7 +29,9 @@ const Main = () => {
                         <button type="button" className="btn_02"></button>
                         <button type="button" className="btn_03"></button>
                     </div>
-                    <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
+                    <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:20}}>
+                        <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
+                    </Draggable>
                 </div>
             </div>
         </div>
