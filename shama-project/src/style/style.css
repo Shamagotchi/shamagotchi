@@ -107,6 +107,15 @@ body{
     }
 }
 
+@-webkit-keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
 @keyframes comingSoon {
     0%{
         height: 0%
@@ -190,58 +199,6 @@ body{
     }
 }
 
-
-@keyframes movingLR {
-    0%{
-        transform: rotate(-2deg);
-        -ms-transform: rotate(-2deg);
-        -webkit-transform: rotate(-2deg);
-      
-    }
-    25%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-   
-    }
-    50%{
-        transform: rotate(2deg);
-        -ms-transform: rotate(2deg);
-        -webkit-transform: rotate(2deg);
-       
-    }
-    100%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-    }
-}
-@-webkit-keyframes movingLR {
-    0%{
-        transform: rotate(-2deg);
-        -ms-transform: rotate(-2deg);
-        -webkit-transform: rotate(-2deg);
-      
-    }
-    25%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-   
-    }
-    50%{
-        transform: rotate(2deg);
-        -ms-transform: rotate(2deg);
-        -webkit-transform: rotate(2deg);
-       
-    }
-    100%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-    }
-}
-
 .device .pin{
     position: absolute;
     z-index: 0;
@@ -254,11 +211,6 @@ body{
     background-size: 100% auto;
     aspect-ratio: 145 / 234;
     user-select: none;
-}
-
-.device .pin:hover{
-    /* animation: movingLR 0.3s infinite both;
-    -webkit-animation: movingLR 0.3s infinite both; */
 }
 
 .pin .text{
@@ -290,6 +242,7 @@ body{
     height: auto;
     background: url(../img/btn1.png) no-repeat 0 0; 
     background-size: 100%;
+    -webkit-tap-highlight-color : transparent;
 }
 .controlBtn_wrap button.btn_02{
     left: 42.7%;
@@ -324,7 +277,7 @@ body{
 @media (max-width: 767px){
 }
 
-@media (max-width: 360px), (orientation: landscape){
+@media (max-width: 360px){
     
     .pin .text{
         font-size: 14px;
