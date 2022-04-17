@@ -41,7 +41,7 @@ body{
 }
 
 
-.device img{
+.device .deviceImg{
     position: relative;
     z-index: 2;
     max-width: 100%;
@@ -69,10 +69,51 @@ body{
     margin: 0 auto;
     background: url(../img/comingsoon.png) no-repeat 0 0;
     background-size: 100% auto;
+    aspect-ratio: 902 / 318;
 }
 
 .screen .comingSoon.active{
     animation: comingSoon 10s forwards;
+}
+
+.screen .ghostImg{
+    position: absolute;
+    left: 7%;
+    bottom: 25%;
+    width: 23%;
+    height: auto;
+    opacity: 0;
+}
+
+.screen .ghostImg.active{
+    animation: 1s blink 5s infinite both;
+}
+
+.screen .ghostImg:nth-of-type(2){
+    left: 39%;
+    top: 60%;
+}
+
+.screen .ghostImg:nth-of-type(3){
+    left: 70%;
+}
+
+@keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
+
+@-webkit-keyframes blink {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100%;
+    }
 }
 
 @keyframes comingSoon {
@@ -158,79 +199,27 @@ body{
     }
 }
 
-
-@keyframes movingLR {
-    0%{
-        transform: rotate(-2deg);
-        -ms-transform: rotate(-2deg);
-        -webkit-transform: rotate(-2deg);
-      
-    }
-    25%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-   
-    }
-    50%{
-        transform: rotate(2deg);
-        -ms-transform: rotate(2deg);
-        -webkit-transform: rotate(2deg);
-       
-    }
-    100%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-    }
-}
-@-webkit-keyframes movingLR {
-    0%{
-        transform: rotate(-2deg);
-        -ms-transform: rotate(-2deg);
-        -webkit-transform: rotate(-2deg);
-      
-    }
-    25%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-   
-    }
-    50%{
-        transform: rotate(2deg);
-        -ms-transform: rotate(2deg);
-        -webkit-transform: rotate(2deg);
-       
-    }
-    100%{
-        transform: rotate(0);
-        -ms-transform: rotate(0);
-        -webkit-transform: rotate(0);
-    }
-}
-
 .device .pin{
     position: absolute;
     z-index: 0;
-    bottom: -98px;
-    left: 0;
-    right: 0;
-    width: 145px;
-    height: 317px;
+    left: 42%;
+    right: 42%;
+    top: 89%;
+    bottom: 0;
     margin: 0 auto;
     background: url(./../img/pin.png) no-repeat 0 0;
-    background-size: 145px 317px;
-    padding-top: 183px;
-}
-
-.device .pin:hover{
-    animation: movingLR 0.3s infinite both;
-    -webkit-animation: movingLR 0.3s infinite both;
+    background-size: 100% auto;
+    aspect-ratio: 145 / 234;
+    user-select: none;
 }
 
 .pin .text{
-    font-size: 29px;
+    position: absolute;
+    bottom: 21%;
+    left: 0;
+    right: 0;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
     font-weight: 600;
     cursor: pointer;
 }
@@ -246,48 +235,52 @@ body{
 
 .controlBtn_wrap button{
     position: absolute;
-    top: 8%;
+    top: 7%;
     left: 21%;
     width: 14%;
     aspect-ratio: 1 / 1;
     height: auto;
     background: url(../img/btn1.png) no-repeat 0 0; 
     background-size: 100%;
+    -webkit-tap-highlight-color : transparent;
 }
 .controlBtn_wrap button.btn_02{
     left: 42.7%;
-    top: 29%;
+    top: 28%;
     aspect-ratio: 243 / 244;
     background: url(../img/btn2.png) no-repeat 0 0; 
     background-size: 100%;
 }
 .controlBtn_wrap button.btn_03{
     left: 63.6%;
-    top: 10%;
+    top: 9%;
     background: url(../img/btn3.png) no-repeat 0 0; 
     background-size: 100%;
 }
 
+.controlBtn_wrap button:active{
+    top: 8%;
+}
+
+.controlBtn_wrap button.btn_02:active{
+    top: 29%;
+}
+
+.controlBtn_wrap button.btn_03:active{
+    top: 10%;
+}
+
 
 @media (min-width: 768px) and (max-width: 1123px){
-
-    .pin .text{
-        font-size: 28px;
-    }
 }
 
 @media (max-width: 767px){
-    .device .pin{
-        bottom: -75px;
-        width: 91px;
-        height: 199px;
-        background-size: 91px 199px;
-        padding-top: 109px;   
-    }
-    .pin .text{
-        font-size: 19px;
-    }
-
 }
 
-@media (orientation)
+@media (max-width: 360px){
+    
+    .pin .text{
+        font-size: 14px;
+        bottom: 15%;
+    }
+}
