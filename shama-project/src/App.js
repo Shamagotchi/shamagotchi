@@ -1,6 +1,5 @@
 import React from 'react';
 import Main from './components/Main';
-import './style/style.css'
 import './style/normalize.css'
 import './style/reset.css'
 
