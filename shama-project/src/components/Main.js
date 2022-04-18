@@ -29,7 +29,7 @@ const Main = () => {
                         <button type="button" className="btn_02"></button>
                         <button type="button" className="btn_03"></button>
                     </div>
-                    <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:20}}>
+                    <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:0}}>
                         <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
                     </Draggable>
                 </div>

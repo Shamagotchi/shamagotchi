@@ -33,6 +33,7 @@ body{
 
 .device{
     display: inline-block;
+    margin-bottom: 13%;
     vertical-align: middle;
 }
 
@@ -259,15 +260,15 @@ body{
 }
 
 .controlBtn_wrap button:active{
-    top: 8%;
+    top: 9%;
 }
 
 .controlBtn_wrap button.btn_02:active{
-    top: 29%;
+    top: 30%;
 }
 
 .controlBtn_wrap button.btn_03:active{
-    top: 10%;
+    top: 11%;
 }
 
 
