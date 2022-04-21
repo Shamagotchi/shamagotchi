@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Screen from './Screen'
 import Draggable from 'react-draggable'
+import './style.scss';
 
 
 const Main = () => {
@@ -19,15 +20,14 @@ const Main = () => {
     };
     return (
         <div className="wrapper">
-            {/* <Intro/> */}
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
                     <Screen ToggleClass={ToggleClass} isActive={isActive}/>
                     <div className="controlBtn_wrap">
-                        <button type="button" className="btn_01"></button>
-                        <button type="button" className="btn_02"></button>
-                        <button type="button" className="btn_03"></button>
+                        <button type="button" className="left"><span className="vh">left</span></button>
+                        <button type="button" className="action"><span className="vh">action</span></button>
+                        <button type="button" className="right"><span className="vh">right</span></button>
                     </div>
                     <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:20}}>
                         <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
