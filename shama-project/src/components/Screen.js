@@ -1,11 +1,18 @@
 import React from 'react';
+import Avatar from './Avatar';
 import Intro from './Intro/Intro';
+import Park from './Theme/Park';
 
-const Screen = ({isActive, ToggleClass}) => {
+const Screen = ({count, isStart, isActive, ToggleClass}) => {
    
     return (
         <div className="screen">
-            <Intro isActive={isActive} ToggleClass={ToggleClass}/>
+            {
+                !isStart ? <Intro isActive={isActive} ToggleClass={ToggleClass}/> : <Park/>
+            }
+            {
+                isStart ? <Avatar isStart={isStart} count={count}/> : null
+            }
         </div>
     );
 };
