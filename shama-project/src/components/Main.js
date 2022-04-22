@@ -34,6 +34,7 @@ const Main = () => {
                     </Draggable>
                 </div>
             </div>
+            <p className='copyright'>&copy;SMGC</p>
         </div>
     );
 };
