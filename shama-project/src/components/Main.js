@@ -34,7 +34,7 @@ const Main = () => {
                     </Draggable>
                 </div>
             </div>
-            <p className='copyright'>&copy;SMGC</p>
+            <p className='copyright'>&copy; 2022 SMGC</p>
         </div>
     );
 };
