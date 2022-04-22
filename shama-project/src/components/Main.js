@@ -30,7 +30,7 @@ const Main = () => {
                         <button type="button" className="right"><span className="vh">right</span></button>
                     </div>
                     <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:20}}>
-                        <button type="button" className="pin" onClick={ToggleClass}><span className="text">PULL</span></button>
+                        <button type="button" className="pin" onClick={ToggleClass}><span className='vh'>pull</span></button>
                     </Draggable>
                 </div>
             </div>

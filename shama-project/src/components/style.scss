@@ -24,6 +24,9 @@ body{
     background: #000 url(./../img/bg.png) no-repeat;
     background-size:cover;
     text-align: center;
+    @supports (-webkit-appearance:none) and (stroke-color: transparent) {
+        min-height: -webkit-fill-available;
+    }
     &:before{
         content: '';
         display: inline-block;
@@ -65,22 +68,11 @@ body{
         left: 42%;
         right: 42%;
         top: 89%;
-        bottom: 0;
+        bottom: -9%;
         margin: 0 auto;
         background: url(./../img/pin.png) no-repeat 0 0;
         background-size: 100% auto;
-        aspect-ratio: 145 / 234;
         user-select: none;
-        .text{
-            position: absolute;
-            bottom: 21%;
-            left: 0;
-            right: 0;
-            font-size: 1.3rem;
-            line-height: 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
     }
 }
 
@@ -97,15 +89,14 @@ body{
         top: 7%;
         left: 21%;
         width: 14%;
-        aspect-ratio: 1 / 1;
-        height: auto;
+        bottom: 34%;
         background: url(../img/btn1.png) no-repeat 0 0; 
         background-size: 100%;
         -webkit-tap-highlight-color : transparent;
         &.action{
             left: 42.7%;
             top: 28%;
-            aspect-ratio: 243 / 244;
+            bottom: 13%;
             background: url(../img/btn2.png) no-repeat 0 0; 
             background-size: 100%;
             &:active{
@@ -132,13 +123,4 @@ body{
 }
 
 @media (max-width: 767px){
-}
-
-@media (max-width: 360px){
-    .pin{
-        .text{
-            font-size: 14px;
-            bottom: 15%;
-        }
-    }
 }
