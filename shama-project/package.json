@@ -24,7 +24,7 @@
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
   },
-  "homepage": "http://ShamaJY.github.io/shamagotchi",
+  "homepage": "http://shamagotchi.com",
   "eslintConfig": {
     "extends": [
       "react-app",

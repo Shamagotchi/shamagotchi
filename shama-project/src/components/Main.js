@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Screen from './Screen'
+import Draggable from 'react-draggable'
 import './style.scss';
 
 
@@ -14,6 +15,12 @@ const Main = () => {
             setIsActive(!isActive)
         }
     }
+    const [position, setPosition] = useState({ y: 0 });
+    // 업데이트 되는 값을 set 해줌
+    const trackPos = (data,bounds) => {
+        setPosition({ y: data.y }); 
+        ToggleClass()
+    };
 
     // 아무 버튼을 누르시오 이후 실행될 function
     const trigger = (e) => {
@@ -61,6 +68,9 @@ const Main = () => {
                         <button type="button" className="action" onClick={(e) => trigger("action")}><span className="vh">action</span></button>
                         <button type="button" className="right" onClick={(e) => trigger("right")}><span className="vh">right</span></button>
                     </div>
+                    <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:40}}>
+                        <button type="button" className="pin" onClick={ToggleClass}><span className='vh'>pull</span></button>
+                    </Draggable>
                 </div>
             </div>
         </div>
