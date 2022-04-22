@@ -3,7 +3,7 @@ import Avatar from './Avatar';
 import Intro from './Intro/Intro';
 import Park from './Theme/Park';
 
-const Screen = ({count, isStart, isActive, ToggleClass}) => {
+const Screen = ({action, count, isStart, isActive, ToggleClass}) => {
    
     return (
         <div className="screen">
@@ -11,7 +11,7 @@ const Screen = ({count, isStart, isActive, ToggleClass}) => {
                 !isStart ? <Intro isActive={isActive} ToggleClass={ToggleClass}/> : <Park/>
             }
             {
-                isStart ? <Avatar isStart={isStart} count={count}/> : null
+                isStart ? <Avatar action={action} isStart={isStart} count={count}/> : null
             }
         </div>
     );

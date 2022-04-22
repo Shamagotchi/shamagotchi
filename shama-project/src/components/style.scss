@@ -8,6 +8,14 @@
     url("./../font/D2Coding/D2Coding.woff2") format('woff2'), 
     url("./../font/D2Coding/D2Coding.ttf") format('truetype');
 }
+@font-face {
+    font-family: 'pixeboy';
+    src: url("./../font/pixeboy/pixeboy.eot");
+    src: url("./../font/pixeboy/pixeboy.eot?#iefix") format('embedded-opentype'), 
+    url("./../font/pixeboy/pixeboy.woff") format('woff'), 
+    url("./../font/pixeboy/pixeboy.woff2") format('woff2'), 
+    url("./../font/pixeboy/pixeboy.ttf") format('truetype');
+}
 
 body{
     overflow: hidden;
@@ -127,6 +135,18 @@ body{
     }
 }
 
+.bubble{
+    position: absolute;
+    right: -10%;
+    top: -10%;
+    background-color: #fff;
+    border-radius: 25%;
+    font-size: 3em;
+    padding: 3%;
+    color: #222;
+    font-family: 'pixeboy', 'D2Coding',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+}
+
 
 
 @keyframes floating {
@@ -153,7 +173,7 @@ body{
         transform:  translate(25%,-50%);
     }
     100%{
-        transform: translate(0,0);
+        transform: translate(10%,0);
     }
 }
 
@@ -171,15 +191,12 @@ body{
         width: 100%;
         height: auto;
     }
-    .character{
-        position: relative;
-        z-index: 10;
-    }
     .cloud{
         position: absolute;
-        bottom: -10px;
-        left: 0;
+        bottom: 0;
+        left: 37%;
         right: 0;
+        width: 50%;
     }
 }
 
