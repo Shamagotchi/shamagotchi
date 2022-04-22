@@ -4,7 +4,6 @@ import Intro from './Intro/Intro';
 import Park from './Theme/Park';
 
 const Screen = ({action, count, isStart, isActive, ToggleClass}) => {
-   
     return (
         <div className="screen">
             {

@@ -50,7 +50,6 @@ const Main = () => {
             setCount(11)
         }
     },[count])
-
     return (
         <div className="wrapper">
             <div className="device">

@@ -2,7 +2,7 @@ import React, {useEffect,useState} from 'react';
 import Avatar1 from './../img/867.png';
 import Cloud from './../img/cloud.png'
 
-const Avatar = (action, count, isStart) => {
+const Avatar = ({action, count, isStart}) => {
     const [isCloud, setIsCloud ] = useState(true)
     const say = [
         'Hi','Grrrr....','?','!!!!'
@@ -12,10 +12,11 @@ const Avatar = (action, count, isStart) => {
             setIsCloud(false)
         },10000)
     }
+    console.log(action)
     const randomSay = say[Math.floor(Math.random() * say.length)]
-    useEffect(() => {
-        // random
-    },[action])
+    // useEffect(() => {
+        
+    // },[action])
     return (
         <div className='avatar' style={{left : `${count * 5}%`}}>
             <img src={Avatar1} className="character" alt="avatar"/>
