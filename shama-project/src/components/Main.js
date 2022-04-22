@@ -3,7 +3,7 @@ import Screen from './Screen'
 import Draggable from 'react-draggable'
 import './style.scss';
 import sound from './../audio/btn_sound.mp3'
-import BgSound from './../audio/shamagotchi_bgm.mp3'
+// import BgSound from './../audio/shamagotchi_bgm.mp3'
 
 
 const Main = () => {
@@ -20,12 +20,12 @@ const Main = () => {
         setPosition({ y: data.y }); 
         ToggleClass()
     };
-    useEffect(() => {
-        playBGSound()
-    },[isActive])
-    const playBGSound = () => {
-        BackgroundSound.play()
-    }
+    // useEffect(() => {
+    //     playBGSound()
+    // },[isActive])
+    // const playBGSound = () => {
+    //     BackgroundSound.play()
+    // }
     const playSound = () => {
         btnSound.play()
     }
@@ -34,7 +34,7 @@ const Main = () => {
         playSound()
     }
     const btnSound = new Audio(sound)
-    const BackgroundSound = new Audio(BgSound)
+    // const BackgroundSound = new Audio(BgSound)
     return (
         <div className="wrapper">
             <div className="device">
