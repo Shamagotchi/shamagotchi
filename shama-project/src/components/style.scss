@@ -64,15 +64,17 @@ body{
         background-color: #5e714b;
     }
     .pin{
+        display: block;
         position: absolute;
         z-index: 0;
-        left: 42%;
-        right: 42%;
+        left: 0;
+        right: 0;
         top: 89%;
         bottom: -9%;
+        width: 100%;
         margin: 0 auto;
-        background: url(./../img/pin.png) no-repeat 0 0;
-        background-size: 100% auto;
+        background: url(./../img/pin.png) no-repeat center 0;
+        background-size: auto 100%;
         user-select: none;
     }
 }
