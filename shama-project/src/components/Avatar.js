@@ -13,14 +13,12 @@ const Avatar = ({count, isStart}) => {
             setIsCloud(false)
         },10000)
     }
-    useEffect(() => {
-        let changeSaying = () => {
-            setSay(saying[Math.floor(Math.random() * saying.length)])
-        }
-        setTimeout(() => {
-            changeSaying()
-        },[10000])
-    },[])
+    let changeSaying = () => {
+        setSay(saying[Math.floor(Math.random() * saying.length)])
+    }
+    setTimeout(() => {
+        changeSaying()
+    },[5000])
 
 
     return (

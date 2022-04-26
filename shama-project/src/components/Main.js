@@ -4,13 +4,13 @@ import Draggable from 'react-draggable'
 import './style.scss'
 import sound from './../audio/btn_sound.mp3'
 
-
 const Main = () => {
     const FrontImage = require('./../img/front2.png') // 샤고스 다마고치 이미지
     const [isActive, setIsActive] = useState(false) 
     const [isStart, setIsStart] = useState(false)
     const [count, setCount] = useState(0)
     const [action, setAction] = useState(false)
+    const [isRemove, setIsRemove] = useState(false)
     const ToggleClass = () => {
         if(!isActive){
             setIsActive(!isActive)
@@ -41,7 +41,12 @@ const Main = () => {
             setAction(true)
         }
     }
-
+    // 핀 삭제 
+    if(isStart){
+        setTimeout(() => {
+            setIsRemove(true)
+        },5000)
+    }
     // 키보드 동작 
     document.onkeydown = checkKey;
 
@@ -74,11 +79,12 @@ const Main = () => {
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
                         <button type="button" className="action" onClick={(e) => trigger("action")}><span className="vh">action</span></button>
                         <button type="button" className="right" onClick={(e) => trigger("right")}><span className="vh">right</span></button>
-
                     </div>
-                    <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:40}}>
-                        <button type="button" className={"pin" + {isStart && 'fadeOut'}} onClick={ToggleClass}><span className='vh'>pull</span></button>
-                    </Draggable>
+                    {
+                        !isRemove && <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:40}}>
+                        <button type="button" className={"pin " + (isStart ? 'fadeOut' : '')} onClick={ToggleClass}><span className='vh'>pull</span></button>
+                        </Draggable>
+                    }
                 </div>
             </div>
             <p className='copyright'>&copy; 2022 SMGC</p>
