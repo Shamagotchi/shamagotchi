@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Screen from './Screen'
 import Draggable from 'react-draggable'
 import './style.scss'
@@ -32,7 +32,7 @@ const Main = () => {
         btnSound.play()
     }
     // 아무 버튼을 누르시오 이후 실행될 function
-    const trigger = (e) => {
+    const trigger = useCallback((e) => {
         playSound()
         if(e === "left"){
             setCount(count-1)
@@ -41,7 +41,7 @@ const Main = () => {
         }else if(e === "action"){
             setAction(!action)
         }
-    }
+    })
     useEffect(() => {
         if(action){
             setTimeout(() => {
@@ -104,4 +104,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default React.memo(Main);

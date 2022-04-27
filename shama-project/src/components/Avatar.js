@@ -5,14 +5,26 @@ import Cloud from './../img/cloud.png'
 const Avatar = ({action, count, isStart}) => {
     const [isCloud, setIsCloud ] = useState(true)
     const [CloudRemove, setCloudRemove ] = useState(true)
-    const [isSaying, setIsSaying] = useState(false)
-    const [say, setSay] = useState('')
+    const [isSaying, setIsSaying] = useState(true)
     const saying = [
         'Hi','Grrrr....','?','!!!!'
     ]
-    const changeSaying = () => {
-       
+    const [say, setSay] = useState('Hi')
+    const getRandomWord = () => {
+        setSay(saying[Math.floor(Math.random() * saying.length)])
     }
+    
+    useEffect(() => {
+        setInterval(() => {
+            setIsSaying(!isSaying)
+            setSay(getRandomWord)
+        },10000)
+
+    },[isSaying])
+
+
+    
+    // 구름 없애기 
     if(isStart){
         setTimeout(() => {
             setIsCloud(false)
@@ -35,4 +47,4 @@ const Avatar = ({action, count, isStart}) => {
     );
 };
 
-export default Avatar;
+export default React.memo(Avatar);

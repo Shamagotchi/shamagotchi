@@ -16,4 +16,4 @@ const Screen = ({action, count, isStart, isActive, ToggleClass}) => {
     );
 };
 
-export default Screen;
+export default React.memo(Screen);
