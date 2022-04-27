@@ -39,9 +39,17 @@ const Main = () => {
         }else if(e === "right"){
             setCount(count+1)
         }else if(e === "action"){
-            setAction(true)
+            setAction(!action)
         }
     }
+    useEffect(() => {
+        if(action){
+            setTimeout(() => {
+                setAction(false)
+            },200)
+        }
+    },[action])
+
     // 핀 삭제 
     if(isStart){
         setTimeout(() => {
@@ -61,13 +69,16 @@ const Main = () => {
         // right arrow
         setCount(count+1)
         }
+        else if(e.keyCode = '32'){
+        setAction(!action)
+        }
     }
     // 캐릭터 이동영역 제한하기
     useEffect(() => {
-        if(count <= -1){
-            setCount(-1)
-        }else if(count >= 11){
-            setCount(11)
+        if(count <= -2){
+            setCount(-2)
+        }else if(count >= 10){
+            setCount(10)
         }
     },[count])
     return (
@@ -79,7 +90,7 @@ const Main = () => {
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
                         <button type="button" className="action" onClick={(e) => trigger("action")}><span className="vh">action</span></button>
-                        <button type="button" className="right" onClick={(e) => trigger("right")}><span className="vh">right</span></button>
+                        <button type="button" className="right" onClick={(e)  => trigger("right")}><span className="vh">right</span></button>
                     </div>
                     {
                         !isRemove && <Draggable axis="y" onDrag={(e, data) => trackPos(data)} bounds={{top:0,bottom:40}}>
