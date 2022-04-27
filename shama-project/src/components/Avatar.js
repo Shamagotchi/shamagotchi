@@ -4,31 +4,33 @@ import Cloud from './../img/cloud.png'
 
 const Avatar = ({count, isStart}) => {
     const [isCloud, setIsCloud ] = useState(true)
+    const [isSaying, setIsSaying] = useState(false)
+    const [say, setSay] = useState('')
     const saying = [
         'Hi','Grrrr....','?','!!!!'
     ]
-    const [say, setSay] = useState('')
+    const changeSaying = () => {
+        setSay(saying[Math.floor(Math.random() * saying.length)])
+    }
     if(isStart){
         setTimeout(() => {
             setIsCloud(false)
         },10000)
-    }
-    let changeSaying = () => {
-        setSay(saying[Math.floor(Math.random() * saying.length)])
-    }
-    setTimeout(() => {
+        setTimeout(() => {
+            setIsSaying(!isSaying)
+        },10000)
         changeSaying()
-    },[5000])
-
+    }
 
     return (
         <div className='avatar' style={{left : `${count * 5}%`}}>
             <img src={Avatar1} className="character" alt="avatar"/>
             {
-                isCloud ? <img className='cloud' src={Cloud} alt="cloud"/> : null
+                isCloud && <img className='cloud' src={Cloud} alt="cloud"/>
             }
-            <p className='bubble'>{say}</p>
-           
+            {
+                isSaying && <p className='bubble'>{say}</p>
+            }
         </div>
     );
 };

@@ -11,6 +11,7 @@ const Main = () => {
     const [count, setCount] = useState(0)
     const [action, setAction] = useState(false)
     const [isRemove, setIsRemove] = useState(false)
+    
     const ToggleClass = () => {
         if(!isActive){
             setIsActive(!isActive)
