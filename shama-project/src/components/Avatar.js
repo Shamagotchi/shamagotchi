@@ -7,10 +7,11 @@ const Avatar = ({action, count, isStart}) => {
     const [CloudRemove, setCloudRemove ] = useState(true)
     const [isSaying, setIsSaying] = useState(false)
     const saying = [
-        'Hi','Grrrr....','?','!!!!'
+        'Hi','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','zzz','BZZZZ','Ahem','YOU?'
     ]
     const [say, setSay] = useState('Hi')
-    
+
+    //말풍선 이벤트
     useEffect(() => {
         let timer = setTimeout(() => {
             setIsSaying(!isSaying)

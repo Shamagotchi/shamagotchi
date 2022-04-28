@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Park.scss'
 
-const Park = () => {
+const Park = ({count}) => {
     return (
-        <div className='parkTheme'>
+        <div className={"parkTheme " + (count == -2 ? 'movingLeft': '') + (count == 10 ? 'movingRight' : '')}>
             
         </div>
     );

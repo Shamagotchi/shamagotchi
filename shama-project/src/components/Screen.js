@@ -7,7 +7,7 @@ const Screen = ({action, count, isStart, isActive, ToggleClass}) => {
     return (
         <div className="screen">
             {
-                isStart ? <Park/> : null
+                isStart ? <Park count={count}/> : null
             }
             {
                 isStart ? <Avatar action={action} isStart={isStart} count={count}/> : null
