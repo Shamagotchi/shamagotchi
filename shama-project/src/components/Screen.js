@@ -7,7 +7,7 @@ const Screen = ({isLeft, isRight, action, count, isStart, isActive, ToggleClass}
     return (
         <div className="screen">
             {
-                isStart ? <Park count={count}/> : null
+                isStart ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
                 isStart ? <Avatar isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null

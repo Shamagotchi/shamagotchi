@@ -46,6 +46,8 @@ const Main = () => {
             setIsLeft(false)
         }else if(e === "action"){
             setAction(!action)
+            setIsRight(false)
+            setIsLeft(false)
         }
     })
     useEffect(() => {
@@ -81,6 +83,8 @@ const Main = () => {
         }
         else if(e.keyCode = '32'){
         setAction(!action)
+        setIsRight(false)
+        setIsLeft(false)
         }
     }
     // 캐릭터 이동영역 제한하기
