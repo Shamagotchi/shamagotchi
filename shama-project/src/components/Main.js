@@ -25,31 +25,35 @@ const Main = () => {
     const trackPos = (data,bounds) => {
         setPosition({ y: data.y }); 
         ToggleClass()
-        if(position.y == 40){
+        if(position.y === 40){
             setIsActive(false)
             setIsStart(true)
         }
     };
+
+    //효과음 재생
     const playSound = () => {
         btnSound.play()
     }
     // 아무 버튼을 누르시오 이후 실행될 function
     const trigger = useCallback((e) => {
         playSound()
-        if(e === "left"){
-            setCount(count-1)
-            setIsLeft(true)
-            setIsRight(false)
-        }else if(e === "right"){
-            setCount(count+1)
-            setIsRight(true)
-            setIsLeft(false)
-        }else if(e === "action"){
-            setAction(!action)
-            setIsRight(false)
-            setIsLeft(false)
+        if(isRemove){
+            if(e == "left"){
+                setCount(count-1)
+                setIsLeft(true)
+                setIsRight(false)
+            }else if(e == "right"){
+                setCount(count+1)
+                setIsRight(true)
+                setIsLeft(false)
+            }else if(e == "action"){
+                setAction(!action)
+            }
         }
     })
+
+    //점프
     useEffect(() => {
         if(action){
             setTimeout(() => {
@@ -66,25 +70,24 @@ const Main = () => {
     }
     // 키보드 동작 
     document.onkeydown = checkKey;
-
     function checkKey(e) {
         e = e || window.event;
-        if (e.keyCode == '37') {
-        // left arrow
-        setCount(count-1)
-        setIsLeft(true)
-        setIsRight(false)
-        }
-        else if (e.keyCode == '39') {
-        // right arrow
-        setCount(count+1)
-        setIsRight(true)
-        setIsLeft(false)
-        }
-        else if(e.keyCode = '32'){
-        setAction(!action)
-        setIsRight(false)
-        setIsLeft(false)
+        if(isRemove){
+            if (e.keyCode == '37') {
+            // left arrow
+            setCount(count-1)
+            setIsLeft(true)
+            setIsRight(false)
+            }
+            else if (e.keyCode == '39') {
+            // right arrow
+            setCount(count+1)
+            setIsRight(true)
+            setIsLeft(false)
+            }
+            else if(e.keyCode == '32'){
+            setAction(!action)
+            }
         }
     }
     // 캐릭터 이동영역 제한하기

@@ -1,6 +1,5 @@
 import React from 'react';
 import Avatar from './Avatar';
-import Intro from './Intro/Intro';
 import Park from './Theme/Park';
 
 const Screen = ({isLeft, isRight, action, count, isStart, isActive, ToggleClass}) => {
