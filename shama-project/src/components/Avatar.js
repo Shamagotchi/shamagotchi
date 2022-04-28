@@ -5,23 +5,23 @@ import Cloud from './../img/cloud.png'
 const Avatar = ({action, count, isStart}) => {
     const [isCloud, setIsCloud ] = useState(true)
     const [CloudRemove, setCloudRemove ] = useState(true)
-    const [isSaying, setIsSaying] = useState(true)
+    const [isSaying, setIsSaying] = useState(false)
     const saying = [
         'Hi','Grrrr....','?','!!!!'
     ]
     const [say, setSay] = useState('Hi')
-    const getRandomWord = () => {
-        setSay(saying[Math.floor(Math.random() * saying.length)])
-    }
     
     useEffect(() => {
-        setInterval(() => {
+        let timer = setTimeout(() => {
             setIsSaying(!isSaying)
-            setSay(getRandomWord)
         },10000)
-
+        if(isSaying){
+            setSay(saying[Math.floor(Math.random() * saying.length)])
+        }
+        return () => {
+            clearTimeout(timer)
+        }
     },[isSaying])
-
 
     
     // 구름 없애기 
@@ -31,7 +31,7 @@ const Avatar = ({action, count, isStart}) => {
         },3300)
         setTimeout(() => {
             setCloudRemove(false)
-        },5000)
+        },10000)
     }
 
     return (
