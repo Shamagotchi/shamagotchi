@@ -247,6 +247,16 @@ body{
             opacity: 0;
         }
     }
+    &.left{
+        img{
+            transform: scaleX(1);
+        }
+    }
+    &.right{
+        img{
+            transform: scaleX(-1);
+        }
+    }
 }
 
 

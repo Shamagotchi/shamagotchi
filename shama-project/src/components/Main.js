@@ -11,7 +11,9 @@ const Main = () => {
     const [count, setCount] = useState(0)
     const [action, setAction] = useState(false)
     const [isRemove, setIsRemove] = useState(false)
-    
+    const [isLeft, setIsLeft] = useState(false)
+    const [isRight, setIsRight] = useState(false)
+
     const ToggleClass = () => {
         if(!isActive){
             setIsActive(!isActive)
@@ -36,8 +38,12 @@ const Main = () => {
         playSound()
         if(e === "left"){
             setCount(count-1)
+            setIsLeft(true)
+            setIsRight(false)
         }else if(e === "right"){
             setCount(count+1)
+            setIsRight(true)
+            setIsLeft(false)
         }else if(e === "action"){
             setAction(!action)
         }
@@ -64,10 +70,14 @@ const Main = () => {
         if (e.keyCode == '37') {
         // left arrow
         setCount(count-1)
+        setIsLeft(true)
+        setIsRight(false)
         }
         else if (e.keyCode == '39') {
         // right arrow
         setCount(count+1)
+        setIsRight(true)
+        setIsLeft(false)
         }
         else if(e.keyCode = '32'){
         setAction(!action)
@@ -86,7 +96,7 @@ const Main = () => {
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen ToggleClass={ToggleClass} count={count} action={action} isActive={isActive} isStart={isStart} count={count}/>
+                    <Screen ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart} count={count}/>
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
                         <button type="button" className="action" onClick={(e) => trigger("action")}><span className="vh">action</span></button>
