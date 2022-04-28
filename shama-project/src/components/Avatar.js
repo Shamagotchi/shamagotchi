@@ -28,10 +28,10 @@ const Avatar = ({action, count, isStart}) => {
     if(isStart){
         setTimeout(() => {
             setIsCloud(false)
-        },6500)
+        },3300)
         setTimeout(() => {
             setCloudRemove(false)
-        },10000)
+        },5000)
     }
 
     return (
