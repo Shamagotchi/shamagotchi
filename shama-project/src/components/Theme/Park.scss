@@ -1,17 +1,11 @@
 @keyframes movingLeft {
-    0%{
-        background-position: 0 0;
-    }    
-    100%{
-        background-position: -600% 0;
+    to{
+        background-position: -300% 0;
     }
 }
 @keyframes movingRight {
-    0%{
-        background-position: 0 0;
-    }    
-    100%{
-        background-position: 600% 0;
+    to{
+        background-position: 300% 0;
     }
 }
 
@@ -35,10 +29,10 @@
     animation: themeDown 2s forwards;
     &.movingLeft{
         // background-position: -100% 0;
-        animation:themeDown 2s forwards, movingLeft 5s linear both;
+        animation:themeDown 2s forwards, movingLeft 5s linear forwards alternate;
     }
     &.movingRight{
         // background-position: 0 100%;
-        animation:themeDown 1s forwards, movingRight 5s linear both;
+        animation:themeDown 1s forwards, movingRight 5s linear forwards alternate;
     }
 }
