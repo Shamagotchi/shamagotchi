@@ -14,6 +14,24 @@ const Main = () => {
     const [isLeft, setIsLeft] = useState(false)
     const [isRight, setIsRight] = useState(false)
 
+    // 저장된 상태값 불러오기 
+    useEffect(() => {
+        const active = JSON.parse(localStorage.getItem('isActive') === "false")
+        const start = JSON.parse(localStorage.getItem('isStart') === "true")
+        const remove = JSON.parse(localStorage.getItem('isRemove'))
+        if(active || start || remove){
+            setIsActive(active)
+            setIsStart(start)
+            setIsRemove(remove)
+        }
+    },[])
+    // 상태값 저장하기
+    useEffect(() => {
+        localStorage.setItem('isActive', JSON.parse(isActive))
+        localStorage.setItem('isStart', JSON.parse(isStart))
+        localStorage.setItem('isRemove', JSON.parse(isRemove))
+    },[isActive,isStart,isRemove])
+
     const ToggleClass = () => {
         if(!isActive){
             setIsActive(!isActive)
