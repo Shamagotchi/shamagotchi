@@ -224,7 +224,7 @@ body{
     width: 50%;
     animation : avatarStart 3s linear 3s both, floating 4s 2s infinite both cubic-bezier(0, 0, 0.71,-0.06);
     -webkit-animation : avatarStart 3s linear 3s both, floating 4s 2s infinite both cubic-bezier(0, 0, 0.71,-0.06);
-    transform-origin: 50% 0;
+    // transform-origin: 50% 0;
     transform: translate(100%,-200%);
     -webkit-transform: translate(100%,-200%);
     -ms-transform: translate(100%,-200%);
@@ -235,7 +235,7 @@ body{
     }
     &::after {
         content: '';
-        opacity: 0;
+        display: none;
         position: absolute;
         left: 0;right: 40%;margin: 0 auto;
         top: 7%;
@@ -258,7 +258,7 @@ body{
     &.on{
         top: 33%;
         &::after {
-            opacity: 1;
+            display: block;
         }
         &::before {
             width: 30%;

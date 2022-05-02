@@ -1,6 +1,12 @@
 import React, {useEffect,useState} from 'react';
 import Avatar1 from './../img/000.png';
 import Cloud from './../img/cloud.png'
+import { useParams } from 'react-router';
+
+export function MakeAvatar() {
+    let params = useParams();
+    console.log(params)
+}
 
 const Avatar = ({isLeft, isRight,action, count, isStart}) => {
     const [isCloud, setIsCloud ] = useState(true)
