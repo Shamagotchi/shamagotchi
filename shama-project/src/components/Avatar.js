@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from 'react';
-import Avatar1 from './../img/867.png';
+import Avatar1 from './../img/000.png';
 import Cloud from './../img/cloud.png'
 
 const Avatar = ({isLeft, isRight,action, count, isStart}) => {
@@ -7,9 +7,9 @@ const Avatar = ({isLeft, isRight,action, count, isStart}) => {
     const [CloudRemove, setCloudRemove ] = useState(true)
     const [isSaying, setIsSaying] = useState(false)
     const saying = [
-        'Hi','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','zzz','BZZZZ','Ahem','YOU?'
+        'Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk'
     ]
-    const [say, setSay] = useState('Hi')
+    const [say, setSay] = useState('Hi') 
 
     //말풍선 이벤트
     useEffect(() => {

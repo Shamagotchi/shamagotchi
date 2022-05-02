@@ -99,7 +99,7 @@ const Main = () => {
         }
     },[count])
     return (
-        <div className="wrapper">
+        <div className="wrapper" id='capture'>
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
