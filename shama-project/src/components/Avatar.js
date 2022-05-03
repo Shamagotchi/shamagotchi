@@ -27,8 +27,6 @@ const Avatar = ({isLeft, isRight,action, count, isStart}) => {
             clearTimeout(timer)
         }
     },[isSaying])
-
-    
     // 구름 없애기 
     if(isStart){
         setTimeout(() => {
@@ -41,7 +39,7 @@ const Avatar = ({isLeft, isRight,action, count, isStart}) => {
 
     return (
         <div className={`avatar ${action ? 'on' : ''} ${isRight ? 'right' : ''}${isLeft ? 'left' : ''}`} style={{left : `${count * 5}%`}}>
-            <img src={Avatar1} className="character" alt="avatar"/>
+            <img src={(data.find(item => item.id === id))} className="character" alt="avatar"/>)
             {
                 CloudRemove && <img className={"cloud " + (isCloud ? '' : 'fadeOut')} src={Cloud} alt="cloud"/>
             }
