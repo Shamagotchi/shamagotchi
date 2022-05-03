@@ -2,21 +2,19 @@ import React, {useEffect,useState} from 'react';
 import Avatar1 from './../img/000.png';
 import Cloud from './../img/cloud.png'
 import { useParams } from 'react-router';
-
-export function MakeAvatar() {
-    let params = useParams();
-    console.log(params)
-}
+import GhostList from '../assets/api/GhostList';
 
 const Avatar = ({isLeft, isRight,action, count, isStart}) => {
     const [isCloud, setIsCloud ] = useState(true)
     const [CloudRemove, setCloudRemove ] = useState(true)
     const [isSaying, setIsSaying] = useState(false)
+    const [data, setData] = useState(GhostList)
     const saying = [
         'Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk'
     ]
     const [say, setSay] = useState('Hi') 
-
+    const { id } = useParams();
+    const findAvatar = 
     //말풍선 이벤트
     useEffect(() => {
         let timer = setTimeout(() => {

@@ -225,9 +225,6 @@ body{
     animation : avatarStart 3s linear 3s both, floating 4s 2s infinite both cubic-bezier(0, 0, 0.71,-0.06);
     -webkit-animation : avatarStart 3s linear 3s both, floating 4s 2s infinite both cubic-bezier(0, 0, 0.71,-0.06);
     // transform-origin: 50% 0;
-    transform: translate(100%,-200%);
-    -webkit-transform: translate(100%,-200%);
-    -ms-transform: translate(100%,-200%);
     transition: left 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
     img{
         width: 100%;

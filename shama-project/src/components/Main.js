@@ -3,6 +3,7 @@ import Screen from './Screen'
 import Draggable from 'react-draggable'
 import './style.scss'
 import sound from './../audio/btn_sound.mp3'
+// import { useParams } from 'react-router-dom';
 
 const Main = () => {
     const FrontImage = require('./../img/front2.png') // 샤고스 다마고치 이미지
@@ -13,7 +14,8 @@ const Main = () => {
     const [isRemove, setIsRemove] = useState(false)
     const [isLeft, setIsLeft] = useState(false)
     const [isRight, setIsRight] = useState(false)
-
+    // const { id } = useParams();
+    // console.log(id)
     // 저장된 상태값 불러오기 
     useEffect(() => {
         const active = JSON.parse(localStorage.getItem('isActive') === "false")
