@@ -1,13 +1,19 @@
 import React from 'react';
-import Intro from './Intro/Intro';
+import { Routes, Route } from 'react-router';
+import Avatar from './Avatar';
+import Park from './Theme/Park';
 
-const Screen = ({isActive, ToggleClass}) => {
-   
+const Screen = ({isLeft, isRight, action, count, isStart, isActive, ToggleClass}) => {
     return (
         <div className="screen">
-            <Intro isActive={isActive} ToggleClass={ToggleClass}/>
+            {
+                isStart ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
+            }
+            {
+                isStart ? <Avatar isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null
+            }
         </div>
     );
 };
 
-export default Screen;
+export default React.memo(Screen);

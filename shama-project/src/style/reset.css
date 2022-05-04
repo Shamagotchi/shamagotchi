@@ -69,6 +69,14 @@ button{
     border : none;
 }
 
+button:active{
+    outline: none;
+}
+
+button:focus{
+    outline: none;
+}
+
 .u_skip {
     overflow: hidden;
     position: absolute;

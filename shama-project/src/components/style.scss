@@ -8,6 +8,14 @@
     url("./../font/D2Coding/D2Coding.woff2") format('woff2'), 
     url("./../font/D2Coding/D2Coding.ttf") format('truetype');
 }
+@font-face {
+    font-family: 'pixeboy';
+    src: url("./../font/pixeboy/pixeboy.eot");
+    src: url("./../font/pixeboy/pixeboy.eot?#iefix") format('embedded-opentype'), 
+    url("./../font/pixeboy/pixeboy.woff") format('woff'), 
+    url("./../font/pixeboy/pixeboy.woff2") format('woff2'), 
+    url("./../font/pixeboy/pixeboy.ttf") format('truetype');
+}
 
 body{
     overflow: hidden;
@@ -17,7 +25,6 @@ body{
 }
 
 .wrapper{
-    position: relative;
     display: inline-block;
     vertical-align: middle;
     width: 100%;
@@ -38,6 +45,7 @@ body{
 
 .device{
     display: inline-block;
+    padding: 0 10%;
     margin-bottom: 13%;
     vertical-align: middle;
     .imgWrap{
@@ -62,6 +70,7 @@ body{
         padding: 10%;
         margin: auto;
         background-color: #5e714b;
+        overflow: hidden;
     }
     .pin{
         display: block;
@@ -75,10 +84,12 @@ body{
         margin: 0 auto;
         background: url(./../img/pin.png) no-repeat center 0;
         background-size: auto 100%;
-        user-select: none;
+        transition: opacity 2s 2s cubic-bezier(0.075, 0.82, 0.165, 1);
+        &.fadeOut{
+            opacity: 0;
+        }
     }
 }
-
 
 .controlBtn_wrap{
     position: absolute;
@@ -122,7 +133,7 @@ body{
 }
 
 .copyright{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -133,6 +144,152 @@ body{
     font-size: 0.8rem;
     line-height: 1.5;
 }
+
+.bubble{
+    position: absolute;
+    left: auto;
+    left: 64%;
+    top: 0;
+    background-color: aliceblue;
+    box-shadow: 1px 1px 4px rgb(33,33,33 / 50%);
+    border-radius: 5px;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    padding: 2% 5%;
+    color: #222;
+    font-family: 'pixeboy', 'D2Coding',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+}
+
+
+
+@keyframes floating {
+    0%{
+        bottom: 12%;
+    }
+    50%{
+        bottom: 10%;
+    }
+    100%{
+        bottom: 12%;
+    }   
+}
+@-webkit-keyframes floating {
+    0%{
+        bottom: 12%;
+    }
+    50%{
+        bottom: 10%;
+    }
+    100%{
+        bottom: 12%;
+    }
+    
+}
+
+@keyframes avatarStart {
+    0%{
+        transform: translate(100%,-200%);
+    }
+    30%{
+        transform:  translate(50%,-100%);
+    }
+    60%{
+        transform:  translate(25%,-50%);
+    }
+    100%{
+        transform: translate(10%,0);
+    }
+}
+
+@-webkit-keyframes avatarStart {
+    0%{
+        -webkit-transform: translate(100%,-200%);
+    }
+    30%{
+        -webkit-transform:  translate(50%,-100%);
+    }
+    60%{
+        -webkit-transform:  translate(25%,-50%);
+    }
+    100%{
+        -webkit-transform: translate(10%,0);
+    }
+}
+
+
+
+.avatar{
+    position: absolute;
+    left: 0;
+    bottom: 12%;
+    width: 50%;
+    animation : avatarStart 3s linear 3s both, floating 4s 2s infinite both cubic-bezier(0, 0, 0.71,-0.06);
+    -webkit-animation : avatarStart 3s linear 3s both, floating 4s 2s infinite both cubic-bezier(0, 0, 0.71,-0.06);
+    // transform-origin: 50% 0;
+    transition: left 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+    img{
+        width: 100%;
+        height: auto;
+    }
+    &::after {
+        content: '';
+        display: none;
+        position: absolute;
+        left: 0;right: 40%;margin: 0 auto;
+        top: 7%;
+        width: 10%;
+        height: 10%;
+        background: url(./../img/heart.png) no-repeat;
+        background-size: contain;
+        transform: rotate(-36deg);
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: -5%;
+        right: 0;left: 0;margin: auto;
+        width: 35%;
+        height: 6%;
+        border-radius: 50%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    &.on{
+        top: 33%;
+        &::after {
+            display: block;
+        }
+        &::before {
+            width: 30%;
+            height: 4%;
+        }
+    }
+    .cloud{
+        position: absolute;
+        bottom: 0;
+        left: 37%;
+        right: 0;
+        width: 50%;
+        transition: opacity 3s 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        &.fadeOut{
+            opacity: 0;
+        }
+    }
+    &.left{
+        img{
+            transform: scaleX(1);
+            -ms-transform: scaleX(1);
+            -webkit-transform: scaleX(1);
+        }
+    }
+    &.right{
+        img{
+            transform: scaleX(-1);
+            -ms-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+        }
+    }
+}
+
 
 
 @media (min-width: 768px) and (max-width: 1123px){
