@@ -22,5 +22,13 @@ export default [
     {
         id: "2633",
         img: './user/2633.png'
-    }
+    },
+    {
+        id: "0867",
+        img: './user/0867.png'
+    },
+    {
+        id: "1721",
+        img: './user/1721.png'
+    },
 ]
