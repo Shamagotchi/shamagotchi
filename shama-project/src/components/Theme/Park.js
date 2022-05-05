@@ -9,4 +9,4 @@ const Park = ({isLeft, isRight, count}) => {
     );
 };
 
-export default Park;
+export default React.memo(Park);

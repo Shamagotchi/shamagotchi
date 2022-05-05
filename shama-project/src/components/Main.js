@@ -49,9 +49,9 @@ const Main = () => {
     };
 
     //효과음 재생
-    const playSound = () => {
+    const playSound = useCallback(() => {
         btnSound.play()
-    }
+    })
     // 아무 버튼을 누르시오 이후 실행될 function
     const trigger = useCallback((e) => {
         playSound()
