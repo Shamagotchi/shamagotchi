@@ -8,22 +8,24 @@ const Avatar = ({isLeft, isRight,action, count, isStart}) => {
     const [isCloud, setIsCloud ] = useState(true)
     const [CloudRemove, setCloudRemove ] = useState(true)
     const [isSaying, setIsSaying] = useState(false)
-    const saying = [
-        'Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk'
-    ]
-    const [say, setSay] = useState('Hi') 
+    const [data, setData] = useState(GhostList)
     const { Id } = useParams();
     const findMyGhost = GhostList.find(item => {
         return item.id === Id
     })
+    const [say, setSay] = useState(findMyGhost.saying[0]) 
     //말풍선 이벤트
     useEffect(() => {
         let timer = setTimeout(() => {
             setIsSaying(!isSaying)
         },10000)
+
         if(isSaying){
-            setSay(saying[Math.floor(Math.random() * saying.length)])
+            setSay(data.map(item => item.id === Id && 
+                findMyGhost.saying[Math.floor(Math.random() * findMyGhost.saying.length)]
+            ))
         }
+        
         return () => {
             clearTimeout(timer)
         }
