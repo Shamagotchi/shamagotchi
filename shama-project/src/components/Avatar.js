@@ -13,7 +13,8 @@ const Avatar = ({isLeft, isRight,action, count, isStart}) => {
     const findMyGhost = GhostList.find(item => {
         return item.id === Id
     })
-    const [say, setSay] = useState(findMyGhost.saying[0]) 
+    const sayingArr = ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    const [say, setSay] = useState(sayingArr) 
     //말풍선 이벤트
     useEffect(() => {
         let timer = setTimeout(() => {
@@ -21,9 +22,13 @@ const Avatar = ({isLeft, isRight,action, count, isStart}) => {
         },10000)
 
         if(isSaying){
-            setSay(data.map(item => item.id === Id && 
-                findMyGhost.saying[Math.floor(Math.random() * findMyGhost.saying.length)]
-            ))
+            if(findMyGhost){
+                setSay(data.map(item => item.id === Id && 
+                    findMyGhost.saying[Math.floor(Math.random() * findMyGhost.saying.length)]
+                ))
+            }else{
+                setSay(sayingArr[Math.floor(Math.random() * sayingArr.length)])
+            }
         }
         
         return () => {
