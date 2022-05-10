@@ -44,4 +44,29 @@ export default [
         img: "./user/0784.png",
         saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
     },
+    {
+        id: "53",
+        img: "./user/0053.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    },
+    {
+        id: "396",
+        img: "./user/0396.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    },
+    {
+        id: "695",
+        img: "./user/0695.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    },
+    {
+        id: "980",
+        img: "./user/0980.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    },
+    {
+        id: "1266",
+        img: "./user/1266.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    },
 ]
