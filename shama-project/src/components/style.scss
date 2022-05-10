@@ -15,11 +15,49 @@
     url("./../font/pixeboy/pixeboy.woff") format('woff'), 
     url("./../font/pixeboy/pixeboy.woff2") format('woff2'), 
     url("./../font/pixeboy/pixeboy.ttf") format('truetype');
+    unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
+}
+
+@font-face {
+    font-family: 'NanumSquare';
+    src: local(NanumSquareOTFLight);
+    src: url('./../font/nanumsquare/NanumSquareOTFLight.eot');
+    src: url('./../font/nanumsquare/NanumSquareOTFLight.woff') format('woff'),
+         url('./../font/nanumsquare/NanumSquareOTFLight.otf') format('opentype');
+    font-weight:300;
+    unicode-range: U+AC00-U+D7A3;
+}
+
+@font-face {
+    font-family: 'NanumSquareOTFR';
+    src: local(NanumSquareOTFRegular);
+    src: url('./../font/nanumsquare/NanumSquareOTFRegular.eot');
+    src: url('./../font/nanumsquare/NanumSquareOTFRegular.woff') format('woff'),
+         url('./../font/nanumsquare/NanumSquareOTFRegular.otf') format('opentype');
+         unicode-range: U+AC00-U+D7A3;
+}
+@font-face {
+    font-family: 'NanumSquareOTFB';
+    src: local(NanumSquareOTFBold);
+    src: url('./../font/nanumsquare/NanumSquareOTFBold.eot');
+    src: url('./../font/nanumsquare/NanumSquareOTFBold.woff') format('woff'),
+         url('./../font/nanumsquare/NanumSquareOTFBold.otf') format('opentype');
+    font-weight:600;
+    unicode-range: U+AC00-U+D7A3;
+}
+@font-face {
+    font-family: 'NanumSquareOTFEB';
+    src: local(NanumSquareOTFExtraBold);
+    src: url('./../font/nanumsquare/NanumSquareOTFExtraBold.eot');
+    src: url('./../font/nanumsquare/NanumSquareOTFExtraBold.woff') format('woff'),
+         url('./../font/nanumsquare/NanumSquareOTFExtraBold.otf') format('opentype');
+    font-weight:700;
+    unicode-range: U+AC00-U+D7A3;
 }
 
 body{
     overflow: hidden;
-    font-family: 'D2Coding',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'D2Coding',-apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1rem;
     line-height: 1.2;
 }
@@ -147,17 +185,17 @@ body{
 
 .bubble{
     position: absolute;
-    left: auto;
     left: 64%;
     top: 0;
     background-color: aliceblue;
     box-shadow: 1px 1px 4px rgb(33,33,33 / 50%);
     border-radius: 5px;
     font-size: 1.2rem;
+    line-height: 1;
     white-space: nowrap;
     padding: 2% 5%;
     color: #444;
-    font-family: 'pixeboy', 'D2Coding',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+    font-family: 'pixeboy','NanumSquare','D2Coding',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
 }
 
 
