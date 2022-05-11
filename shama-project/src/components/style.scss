@@ -15,7 +15,6 @@
     url("./../font/pixeboy/pixeboy.woff") format('woff'), 
     url("./../font/pixeboy/pixeboy.woff2") format('woff2'), 
     url("./../font/pixeboy/pixeboy.ttf") format('truetype');
-    unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
 }
 
 @font-face {
@@ -25,7 +24,6 @@
     src: url('./../font/nanumsquare/NanumSquareOTFLight.woff') format('woff'),
          url('./../font/nanumsquare/NanumSquareOTFLight.otf') format('opentype');
     font-weight:300;
-    unicode-range: U+AC00-U+D7A3;
 }
 
 @font-face {
@@ -34,7 +32,6 @@
     src: url('./../font/nanumsquare/NanumSquareOTFRegular.eot');
     src: url('./../font/nanumsquare/NanumSquareOTFRegular.woff') format('woff'),
          url('./../font/nanumsquare/NanumSquareOTFRegular.otf') format('opentype');
-         unicode-range: U+AC00-U+D7A3;
 }
 @font-face {
     font-family: 'NanumSquareOTFB';
@@ -43,7 +40,6 @@
     src: url('./../font/nanumsquare/NanumSquareOTFBold.woff') format('woff'),
          url('./../font/nanumsquare/NanumSquareOTFBold.otf') format('opentype');
     font-weight:600;
-    unicode-range: U+AC00-U+D7A3;
 }
 @font-face {
     font-family: 'NanumSquareOTFEB';
@@ -52,7 +48,6 @@
     src: url('./../font/nanumsquare/NanumSquareOTFExtraBold.woff') format('woff'),
          url('./../font/nanumsquare/NanumSquareOTFExtraBold.otf') format('opentype');
     font-weight:700;
-    unicode-range: U+AC00-U+D7A3;
 }
 
 body{
@@ -86,6 +81,12 @@ body{
     padding: 0 10%;
     margin-bottom: 13%;
     vertical-align: middle;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     .imgWrap{
         position: relative;
     }
