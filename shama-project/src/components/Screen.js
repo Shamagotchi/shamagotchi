@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router';
 import Avatar from './Avatar';
 import Park from './Theme/Park';
 
-const Screen = ({isLeft, isRight, action, count, isStart, isActive, ToggleClass}) => {
+const Screen = ({isLeft, isRight, action, count, isStart}) => {
     return (
         <div className="screen">
             {

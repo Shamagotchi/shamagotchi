@@ -132,6 +132,18 @@ body{
     }
 }
 
+.actionBox{
+    position: absolute;
+    bottom: 9%;
+    left: 0;
+    right: 0;
+    .teachTalk{
+        width: 60px;
+        height: 60px;
+        background: url(./../img/btn_chat.png) 0 0 / cover no-repeat;
+    }
+}
+
 .copyright{
     position: fixed;
     bottom: 0;

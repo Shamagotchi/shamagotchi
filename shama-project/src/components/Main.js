@@ -120,7 +120,7 @@ const Main = () => {
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart} trigger={trigger}/>
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
                         <button type="button" className="action" onClick={(e) => trigger("action")}><span className="vh">action</span></button>
@@ -132,7 +132,13 @@ const Main = () => {
                         </Draggable>
                     }
                 </div>
+                <div className="actionBox">
+                <button type="button" className="left"><span className="vh">left</span></button>
+                <button type="button" className="teachTalk"><span className="vh">teach ghost how to talk</span></button>
+                <button type="button" className="right"><span className="vh">right</span></button>
+                </div>
             </div>
+
             <p className='copyright'>&copy; 2022 SMGC</p>
         </div>
     );
