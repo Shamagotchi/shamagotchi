@@ -6,6 +6,7 @@ import sound from './../audio/btn_sound.mp3'
 
 const Main = () => {
     const FrontImage = require('./../img/front2.png') // 샤고스 다마고치 이미지
+    const sayImage = require('./../img/chat.png') // say 이미지 
     const [isActive, setIsActive] = useState(false) 
     const [isStart, setIsStart] = useState(false)
     const [count, setCount] = useState(0)
@@ -115,6 +116,10 @@ const Main = () => {
             setCount(10)
         }
     },[count])
+    // 메뉴 활성화
+    // const menuActive = () => {
+    //     setIsStart(false)
+    // } 
     return (
         <div className="wrapper" id='capture'>
             <div className="device">
@@ -132,6 +137,9 @@ const Main = () => {
                         <button type="button" className={"pin " + (isStart ? 'fadeOut' : '')} onClick={ToggleClass}><span className='vh'>pull</span></button>
                         </Draggable>
                     }
+                    <div className="selectBox">
+                        <button type="button" /* onClick={() => menuActive()} */ className="say"><img src={sayImage} width="20" alt="say"/></button>
+                    </div>
                 </div>
             </div>
             <p className='copyright'>&copy; 2022 SMGC</p>

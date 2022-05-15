@@ -5,10 +5,10 @@ import Park from './Theme/Park';
 
 const Screen = ({isLeft, isRight, action, count, isStart}) => {
     return (
-        <div className="screen">
-            {
-                isStart ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
-            }
+        <div className={"screen " + (isStart ? "parkTheme " : '') + (isLeft || count < -2 ? 'movingLeft': '') + (isRight || count > 10 ? 'movingRight' : '')}>
+            {/* {
+                isStart ? <Park className={"parkTheme " + (isLeft || count < -2 ? 'movingLeft': '') + (isRight || count > 10 ? 'movingRight' : '')}/> : null
+            } */}
             {
                 isStart ? <Avatar isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null
             }
