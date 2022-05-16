@@ -2,13 +2,17 @@ import React from 'react';
 import { Routes, Route } from 'react-router';
 import Avatar from './Avatar';
 import Park from './Theme/Park';
+import Menu from './Menu';
 
-const Screen = ({isLeft, isRight, action, count, isStart}) => {
+const Screen = ({isMenuOn,isLeft, isRight, action, count, isStart}) => {
     return (
-        <div className={"screen " + (isStart ? "parkTheme " : '') + (isLeft || count < -2 ? 'movingLeft': '') + (isRight || count > 10 ? 'movingRight' : '')}>
+        <div className={"screen "+(isStart ? "parkTheme " : '') + (isLeft || count < -2 ? 'movingLeft': '') + (isRight || count > 10 ? 'movingRight' : '')}>
             {/* {
                 isStart ? <Park className={"parkTheme " + (isLeft || count < -2 ? 'movingLeft': '') + (isRight || count > 10 ? 'movingRight' : '')}/> : null
             } */}
+            {
+                isMenuOn && <Menu />
+            }
             {
                 isStart ? <Avatar isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null
             }

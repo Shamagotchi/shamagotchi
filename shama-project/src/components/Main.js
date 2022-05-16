@@ -14,6 +14,7 @@ const Main = () => {
     const [isRemove, setIsRemove] = useState(false)
     const [isLeft, setIsLeft] = useState(false)
     const [isRight, setIsRight] = useState(false)
+    const [isMenuOn, setIsMenuOn] = useState(false)
     // 저장된 상태값 불러오기 
     useEffect(() => {
         const active = JSON.parse(localStorage.getItem('isActive') === "false")
@@ -117,15 +118,15 @@ const Main = () => {
         }
     },[count])
     // 메뉴 활성화
-    // const menuActive = () => {
-    //     setIsStart(false)
-    // } 
+    const menuActive = () => {
+        setIsMenuOn(!isMenuOn)
+    } 
     return (
         <div className="wrapper" id='capture'>
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
                     {/* 버튼 */}
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
@@ -137,9 +138,12 @@ const Main = () => {
                         <button type="button" className={"pin " + (isStart ? 'fadeOut' : '')} onClick={ToggleClass}><span className='vh'>pull</span></button>
                         </Draggable>
                     }
-                    <div className="selectBox">
-                        <button type="button" /* onClick={() => menuActive()} */ className="say"><img src={sayImage} width="20" alt="say"/></button>
+                    {
+                        isStart && <div className="selectBox">
+                        <button type="button" onClick={() => menuActive()} className="say"><img src={sayImage} width="20" alt="say"/></button>
                     </div>
+                    }
+                 
                 </div>
             </div>
             <p className='copyright'>&copy; 2022 SMGC</p>
