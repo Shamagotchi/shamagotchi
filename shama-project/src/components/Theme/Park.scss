@@ -1,0 +1,38 @@
+@keyframes movingLeft {
+    to{
+        background-position: -300% 0;
+    }
+}
+@keyframes movingRight {
+    to{
+        background-position: 300% 0;
+    }
+}
+
+@keyframes themeDown {
+    0%{
+        top: -100%;
+    }
+    100%{
+        top: 0;
+    }
+    
+}
+
+.parkTheme{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../img/bg_park.png) 0 0 / 120% 100% repeat-x;
+    // animation: movingLeft 5s linear infinite;
+    animation: themeDown 2s forwards;
+    &.movingLeft{
+        // background-position: -100% 0;
+        animation:themeDown 2s forwards, movingLeft 5s linear forwards alternate;
+    }
+    &.movingRight{
+        // background-position: 0 100%;
+        animation:themeDown 1s forwards, movingRight 5s linear forwards alternate;
+    }
+}
