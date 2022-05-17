@@ -89,4 +89,19 @@ export default [
         img: "./user/2685.png",
         saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
     },
+    {
+        id: "693",
+        img: "./user/0693.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    },
+    {
+        id: "1855",
+        img: "./user/1855.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    },
+    {
+        id: "2318",
+        img: "./user/2318.png",
+        saying : ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    }
 ]
