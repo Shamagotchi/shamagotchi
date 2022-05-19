@@ -1,0 +1,31 @@
+
+.menu{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 20% 0 0;
+    word-wrap: break-word;
+    word-break: break-word;
+    .subject{
+        font-size: 1rem;
+    }
+    +.avatar{
+        width: 25%;
+        &.on{
+            top: 45%;
+        }
+    }
+}
+
+.CustomText{
+    display: block;
+    width: 50%;
+    height: 10%;
+    margin: 10px auto 0;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    text-align: center;
+}

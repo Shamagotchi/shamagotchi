@@ -3,10 +3,10 @@ import Screen from './Screen'
 import Draggable from 'react-draggable'
 import './style.scss'
 import sound from './../audio/btn_sound.mp3'
+import Activity from './Menu/Activity';
 
 const Main = () => {
     const FrontImage = require('./../img/front2.png') // 샤고스 다마고치 이미지
-    const sayImage = require('./../img/chat.png') // say 이미지 
     const [isActive, setIsActive] = useState(false) 
     const [isStart, setIsStart] = useState(false)
     const [count, setCount] = useState(0)
@@ -15,6 +15,7 @@ const Main = () => {
     const [isLeft, setIsLeft] = useState(false)
     const [isRight, setIsRight] = useState(false)
     const [isMenuOn, setIsMenuOn] = useState(false)
+    const [isPark, setIsPark] = useState(true)
     // 저장된 상태값 불러오기 
     useEffect(() => {
         const active = JSON.parse(localStorage.getItem('isActive') === "false")
@@ -120,13 +121,14 @@ const Main = () => {
     // 메뉴 활성화
     const menuActive = () => {
         setIsMenuOn(!isMenuOn)
+        setIsPark(!isPark)
     } 
     return (
         <div className="wrapper" id='capture'>
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen isPark={isPark} isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
                     {/* 버튼 */}
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
@@ -139,9 +141,7 @@ const Main = () => {
                         </Draggable>
                     }
                     {
-                        isStart && <div className="selectBox">
-                        <button type="button" onClick={() => menuActive()} className="say"><img src={sayImage} width="20" alt="say"/></button>
-                    </div>
+                        isRemove && <Activity isMenuOn={isMenuOn} menuActive={menuActive}/>
                     }
                  
                 </div>

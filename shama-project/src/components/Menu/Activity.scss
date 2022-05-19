@@ -1,0 +1,22 @@
+.selectBox{
+    position: absolute;
+    z-index: 3;
+    left: 15%;
+    top: 21%;
+    bottom: 24%;
+    right: 17%;
+    margin: auto;
+    .say{
+        position: absolute;
+        top: 10%;
+        right: 10%;
+        width: 8%;
+        height: 8%;
+        z-index: 10;
+        background-color: transparent;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+}

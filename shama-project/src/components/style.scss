@@ -130,6 +130,45 @@ body{
     }
 }
 
+@keyframes movingLeft {
+    to{
+        background-position: -300% 0;
+    }
+}
+@keyframes movingRight {
+    to{
+        background-position: 300% 0;
+    }
+}
+
+@keyframes themeDown {
+    0%{
+        top: -100%;
+    }
+    100%{
+        top: 0;
+    }
+    
+}
+
+.parkTheme{
+    // position: absolute;
+    // left: 0;
+    // width: 100%;
+    // height: 100%;
+    background: url(./../img/bg_park.png) 0 0 / 120% 100% repeat-x;
+    // animation: movingLeft 5s linear infinite;
+    // animation: themeDown 2s forwards;
+    &.movingLeft{
+        // background-position: -100% 0;
+        animation:movingLeft 5s linear forwards alternate;
+    }
+    &.movingRight{
+        // background-position: 0 100%;
+        animation:movingRight 5s linear forwards alternate;
+    }
+}
+
 .controlBtn_wrap{
     position: absolute;
     left: 0;
@@ -197,28 +236,6 @@ body{
     padding: 0 5%;
     color: #444;
     font-family: 'pixeboy','NanumSquare','D2Coding',-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
-}
-
-.selectBox{
-    position: absolute;
-    z-index: 3;
-    left: 15%;
-    top: 21%;
-    bottom: 24%;
-    right: 17%;
-    margin: auto;
-    button{
-        position: absolute;
-        top: 10%;
-        right: 10%;
-        width: 8%;
-        height: 8%;
-        background-color: transparent;
-        img{
-            width: 100%;
-            height: auto;
-        }
-    }
 }
 
 .avatar{
@@ -293,20 +310,4 @@ body{
     }
 }
 
-.menu{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    padding: 25% 5% 0;
-    background-color: #5e714b;
-    word-wrap: break-word;
-    word-break: break-word;
-    .subject{
-        font-size: 1rem;
-    }
-    +.avatar{
-        width: 25%;
-    }
-}
+
