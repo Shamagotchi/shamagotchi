@@ -6,18 +6,22 @@ const Menu = () => {
     const ref = useRef()
     const [form, setForm] = useState('')
     const {say} = form
+    const changeInput = (e) => {
+        const {value, name} = e.target
+    }
     const onAdd = (e) => {
         e.preventDefault()
         //공백처리
         if(!say) return
         ref.current.focus()
+      
     }
     return (
         <div className="menu">
             <Typed className="subject" strings={['Teach your ghost to say!']} showCursor={false}
                     typeSpeed={80}/>
             <form onSubmit={onAdd}>
-                <input type="text" ref={ref} name="say" value={say} maxLength="5" autoFocus={true} className="CustomText"/>
+                <input type="text" ref={ref} name="say" value={say} maxLength="5" autoFocus={true} className="CustomText" onChange={changeInput}/>
             </form>
         </div>
     );
