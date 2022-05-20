@@ -4,6 +4,8 @@ import Draggable from 'react-draggable'
 import './style.scss'
 import sound from './../audio/btn_sound.mp3'
 import Activity from './Menu/Activity';
+import GhostList from './../assets/api/GhostList';
+import { useParams } from 'react-router';
 
 const Main = () => {
     const FrontImage = require('./../img/front2.png') // 샤고스 다마고치 이미지
@@ -16,6 +18,34 @@ const Main = () => {
     const [isRight, setIsRight] = useState(false)
     const [isMenuOn, setIsMenuOn] = useState(false)
     const [isPark, setIsPark] = useState(true)
+    const [isSaying, setIsSaying] = useState(false)
+    const [data, setData] = useState(GhostList)
+    const { Id } = useParams();
+    const findMyGhost = GhostList.find(item => {
+        return item.id === Id
+    })
+    const sayingArr = ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
+    const [say, setSay] = useState(sayingArr) 
+    //말풍선 이벤트
+    useEffect(() => {
+        let timer = setTimeout(() => {
+            setIsSaying(!isSaying)
+        },10000)
+
+        if(isSaying){
+            if(findMyGhost){
+                setSay(data.map(item => item.id === Id && 
+                    findMyGhost.saying[Math.floor(Math.random() * findMyGhost.saying.length)]
+                ))
+            }else{
+                setSay(sayingArr[Math.floor(Math.random() * sayingArr.length)])
+            }
+        }
+        
+        return () => {
+            clearTimeout(timer)
+        }
+    },[isSaying])
     // 저장된 상태값 불러오기 
     useEffect(() => {
         const active = JSON.parse(localStorage.getItem('isActive') === "false")
@@ -128,7 +158,7 @@ const Main = () => {
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen isPark={isPark} isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen say={say} isSaying={isSaying} findMyGhost={findMyGhost} isPark={isPark} isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
                     {/* 버튼 */}
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
@@ -141,7 +171,7 @@ const Main = () => {
                         </Draggable>
                     }
                     {
-                        isRemove && <Activity isMenuOn={isMenuOn} menuActive={menuActive}/>
+                        isRemove && <Activity say={say} setSay={setSay} findMyGhost={findMyGhost} isMenuOn={isMenuOn} menuActive={menuActive}/>
                     }
                  
                 </div>
