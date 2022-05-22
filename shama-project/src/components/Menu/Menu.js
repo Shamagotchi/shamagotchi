@@ -4,31 +4,37 @@ import './Menu.scss'
 
 const Menu = ({say, setSay, findMyGhost}) => {
     const ref = useRef()
-    const [form, setForm] = useState({
-        sayingAnything : ''
+    const [changeSaying, setChangeSaying] = useState({
+        saying : ''
     })
+    const {saying} = changeSaying
     const changeVal = (e) => {
         const {value} = e.target
-        setForm({
-            ...form,
-            name : value
+        setChangeSaying({
+            ...changeSaying,
+            [saying] : value
         })
+       
     }
     const onAdd = (e) => {
         e.preventDefault()
         //공백처리
-        // if(!say) return
+        if(!saying) return
+        findMyGhost.saying.push(changeSaying.saying)
+        setChangeSaying({
+            saying : ''
+        })
         ref.current.focus()
-        setSay(findMyGhost.saying.push(sayingAnything))
-        console.log(findMyGhost.saying)
     }
+    console.log(saying)
 
     return (
         <div className="menu">
             <Typed className="subject" strings={['Teach your ghost to say!']} showCursor={false}
                     typeSpeed={80}/>
-            <form onSubmit={onAdd}>
-                <input type="text" ref={ref} name="sayingAnything" maxLength="5" autoFocus={true} className="CustomText" onChange={changeVal}/>
+            <form >
+                <input type="text" ref={ref} value={saying} name="saying" maxLength="5" autoFocus={true} className="CustomText" onChange={changeVal} ref={ref}/>
+                <button type="submit" onSubmit={onAdd}>Teach!</button>
             </form>
         </div>
     );
