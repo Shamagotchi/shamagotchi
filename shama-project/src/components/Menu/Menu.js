@@ -12,7 +12,7 @@ const Menu = ({say, setSay, findMyGhost}) => {
         const {value} = e.target
         setChangeSaying({
             ...changeSaying,
-            [saying] : value
+            name : value
         })
        
     }
@@ -25,16 +25,16 @@ const Menu = ({say, setSay, findMyGhost}) => {
             saying : ''
         })
         ref.current.focus()
+        alert(changeSaying.saying)
     }
-    console.log(saying)
 
     return (
         <div className="menu">
             <Typed className="subject" strings={['Teach your ghost to say!']} showCursor={false}
                     typeSpeed={80}/>
-            <form >
-                <input type="text" ref={ref} value={saying} name="saying" maxLength="5" autoFocus={true} className="CustomText" onChange={changeVal} ref={ref}/>
-                <button type="submit" onSubmit={onAdd}>Teach!</button>
+            <form onSubmit={onAdd} >
+                <input type="text" name="saying" maxLength="5" autoFocus={true} className="CustomText" onChange={changeVal} ref={ref}/>
+                <button type="submit">Teach!</button>
             </form>
         </div>
     );
