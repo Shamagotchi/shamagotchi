@@ -11,21 +11,23 @@
     .subject{
         font-size: 1rem;
     }
-    +.avatar{
-        width: 25%;
-        &.on{
-            top: 45%;
-        }
+}
+
+.sayingWrap{
+    display: flex;
+    width: 50%;
+    height: 10%;
+    margin: 10px auto 0;
+    .btnAdd{
+        flex: 0 0 20px;
+        height: 100%;
     }
 }
 
 .CustomText{
     display: block;
-    width: 50%;
-    height: 10%;
-    margin: 10px auto 0;
-    border: none;
     outline: none;
+    border: 1px solid #000;
     background-color: transparent;
     text-align: center;
 }
