@@ -20,6 +20,7 @@ const Main = () => {
     const [isPark, setIsPark] = useState(true)
     const [isSaying, setIsSaying] = useState(false)
     const [data, setData] = useState(GhostList)
+    const [isNy, setNy] = useState(false)
     const { Id } = useParams();
     const findMyGhost = GhostList.find(item => {
         return item.id === Id
@@ -80,6 +81,11 @@ const Main = () => {
             setIsStart(true)
         }
     };
+    // 배경 전환
+    function changeBG(e){
+        setNy(!isNy)
+        setIsPark(!isPark)
+    }
 
     //효과음 재생
     // const playSound = useCallback(() => {
@@ -151,14 +157,13 @@ const Main = () => {
     // 메뉴 활성화
     const menuActive = () => {
         setIsMenuOn(!isMenuOn)
-        setIsPark(!isPark)
     } 
     return (
         <div className="wrapper" id='capture'>
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen say={say} isSaying={isSaying} findMyGhost={findMyGhost} isPark={isPark} isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen isMenuOn={isMenuOn} isNy={isNy} say={say} isSaying={isSaying} findMyGhost={findMyGhost} isPark={isPark} isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
                     {/* 버튼 */}
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>
@@ -176,6 +181,12 @@ const Main = () => {
                  
                 </div>
             </div>
+            {
+                isPark && <button type='button' className='btnNY' onClick={changeBG}><span className='vh'>newyork background</span></button>
+            }
+            {
+                isNy && <button type='button' className='btnPark' onClick={changeBG}><span className='vh'>park background</span></button>
+            }
             <p className='copyright'>&copy; 2022 SMGC</p>
         </div>
     );

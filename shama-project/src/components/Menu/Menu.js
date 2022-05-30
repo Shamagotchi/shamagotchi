@@ -14,25 +14,15 @@ const Menu = ({say, setSay, findMyGhost}) => {
             ...changeSaying,
             sayingText : value
         })
-       
     }
     const onAdd = (e) => {
-        if(!sayingText){
-            return
-        }else{
+        if(findMyGhost){
             findMyGhost.saying.push(sayingText)
+            console.log(findMyGhost.saying)
+        }else{
+            alert("please connect your account to save")
         }
-        console.log(findMyGhost.saying)
-        //공백처리
-        // if(!saying) return
-        // findMyGhost.saying.push(changeSaying.saying)
-        // setChangeSaying({
-        //     saying : ''
-        // })
-        // ref.current.focus()
-        // alert(changeSaying.saying)
     }
-
     return (
         <div className="menu">
             <Typed className="subject" strings={['Teach your ghost to say!']} showCursor={false}
@@ -41,7 +31,10 @@ const Menu = ({say, setSay, findMyGhost}) => {
                 <input type="text" name="sayingText" maxLength="5" autoFocus={true} className="CustomText" onChange={changeVal} ref={ref}/>
                 <button type='button' className='btnAdd' onClick={onAdd}>ADD</button>
             </div>
-            <button type="button" className='btnListAdd'>+</button>
+            {
+                findMyGhost.saying.map((index,item) => <p className='sayingList'>I can say {findMyGhost.saying[item]}</p>)
+            }
+            <button type="button" className='default'>Use Default</button>
         </div>
     );
 };

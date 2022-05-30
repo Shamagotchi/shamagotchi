@@ -1,11 +1,20 @@
 import React from 'react';
+import { Routes, Route } from 'react-router';
 import Avatar from './Avatar';
+import Park from './Theme/Park';
+import Ny from './Theme/Ny';
 
-const Screen = ({say, isSaying,findMyGhost, isPark ,isLeft, isRight, action, count, isStart}) => {
+const Screen = ({isMenuOn, isPark, isNy, isLeft, isRight, action, count, isStart, isActive, ToggleClass}) => {
     return (
-        <div className={"screen "+(isPark ? "parkTheme " : '') + (isLeft || count < -2 ? 'movingLeft': '') + (isRight || count > 10 ? 'movingRight' : '')}>
+        <div className="screen">
             {
-                (isStart && isPark) ? <Avatar say={say} isSaying={isSaying} findMyGhost={findMyGhost} isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null
+                (isStart && isPark && !isMenuOn) ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
+            }
+            {
+                (isStart && isNy && !isMenuOn) ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
+            }
+            {
+                (isStart && !isMenuOn) ? <Avatar isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null
             }
         </div>
     );

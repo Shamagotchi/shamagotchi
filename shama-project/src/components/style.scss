@@ -141,34 +141,6 @@ body{
     }
 }
 
-@keyframes themeDown {
-    0%{
-        top: -100%;
-    }
-    100%{
-        top: 0;
-    }
-    
-}
-
-.parkTheme{
-    // position: absolute;
-    // left: 0;
-    // width: 100%;
-    // height: 100%;
-    background: url(./../img/bg_park.png) 0 0 / 120% 100% repeat-x;
-    // animation: movingLeft 5s linear infinite;
-    // animation: themeDown 2s forwards;
-    &.movingLeft{
-        // background-position: -100% 0;
-        animation:movingLeft 5s linear forwards alternate;
-    }
-    &.movingRight{
-        // background-position: 0 100%;
-        animation:movingRight 5s linear forwards alternate;
-    }
-}
-
 .controlBtn_wrap{
     position: absolute;
     left: 0;
@@ -310,4 +282,25 @@ body{
     }
 }
 
+.btnNY{
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    width: 8vh;
+    height: 8vh;
+    border-radius: 20%;
+    background: url(../img/btn_ny.png)  no-repeat 0 0;
+    background-size: 100%;
+}
+
+.btnPark{
+    position: fixed;
+    right: 5%;
+    bottom: 5%;
+    width: 8vh;
+    height: 8vh;
+    border-radius: 20%;
+    background: url(../img/btn_park.png)  no-repeat 0 0;
+    background-size: 100%;
+}
 

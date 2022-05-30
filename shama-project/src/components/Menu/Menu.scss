@@ -15,19 +15,37 @@
 
 .sayingWrap{
     display: flex;
+    position: relative;
     width: 50%;
     height: 10%;
     margin: 10px auto 0;
     .btnAdd{
-        flex: 0 0 20px;
+        position: absolute;
+        right: 10px;
+        background-color: transparent;
         height: 100%;
     }
 }
 
 .CustomText{
+    position: relative;
     display: block;
     outline: none;
-    border: 1px solid #000;
-    background-color: transparent;
+    background-color: #fff;
+    border-radius: 100px;
     text-align: center;
+    border: none;
+    &:focus{
+        border: 1px solid #000;
+    }
+}
+
+.default{
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid #000;
+    font-size: 15px;
 }
