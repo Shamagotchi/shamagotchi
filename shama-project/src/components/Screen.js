@@ -4,7 +4,7 @@ import Avatar from './Avatar';
 import Park from './Theme/Park';
 import Ny from './Theme/Ny';
 
-const Screen = ({isMenuOn, isPark, isNy, isLeft, isRight, action, count, isStart, isActive, ToggleClass}) => {
+const Screen = ({say, isSaying, isMenuOn, isPark, isNy, isLeft, isRight, action, count, isStart, isActive, ToggleClass}) => {
     return (
         <div className="screen">
             {
@@ -14,7 +14,7 @@ const Screen = ({isMenuOn, isPark, isNy, isLeft, isRight, action, count, isStart
                 (isStart && isNy && !isMenuOn) ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
-                (isStart && !isMenuOn) ? <Avatar isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count}/> : null
+                (isStart && !isMenuOn) ? <Avatar say={say} isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count} isSaying={isSaying}/> : null
             }
         </div>
     );

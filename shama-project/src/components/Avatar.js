@@ -17,7 +17,6 @@ const Avatar = ({say ,isSaying,findMyGhost,isLeft, isRight,action, count, isStar
             setCloudRemove(false)
         },10000)
     }
-
     return (
         <div className={`avatar ${action ? 'on' : ''} ${isRight ? 'right' : ''}${isLeft ? 'left' : ''}`} style={{left : `${count * 5}%`}}>
             <img src={findMyGhost ? findMyGhost.img : Avatar1} className="character" alt="avatar"/>

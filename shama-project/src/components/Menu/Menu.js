@@ -38,13 +38,19 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
         }
     }
     useEffect(() => {
-
         if(findMyGhost && findMyGhost.saying.length == 0){
             setIsVisible(true)
         }else{
             setIsVisible(false)
         }
-    },)
+    })
+    const onDelList = (id) => {
+        if(findMyGhost){
+            findMyGhost.saying.filter((data) => data.id !== id)
+        }else{
+            alert("please connect your account to save")
+        }
+    }
     console.log(isVisible)
     return (
         <div className="menu">
@@ -57,7 +63,7 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             <span className='mapText'>I can say...</span> 
             <ul className='sayingList'>
             {
-                findMyGhost && findMyGhost.saying.map((index,item) => <li key={index}>{findMyGhost.saying[item]}<button className='btnDel'><span className='vh'>delete</span></button></li>)
+                findMyGhost && findMyGhost.saying.map((index,item) => <li key={index}>{findMyGhost.saying[item]}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>)
             }
             </ul>
             <div className='btnWrap'>

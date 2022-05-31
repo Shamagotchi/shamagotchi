@@ -70,13 +70,10 @@
         }
         .btnDel{
             position: absolute;
-            right: 0;
-            border: 1px solid #000;
-            &:before{
-                content: '';
-                position: absolute;
-                width: 5px;
-            }
+            right: 10px;
+            width: 15px;
+            height: 15px;
+            background: url(../../img/btnDel.png) 0 0/15px 15px no-repeat;
         }
     }
     .btnWrap{
