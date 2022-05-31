@@ -68,6 +68,16 @@
             padding: 2px;
             margin-bottom: 5px;
         }
+        .btnDel{
+            position: absolute;
+            right: 0;
+            border: 1px solid #000;
+            &:before{
+                content: '';
+                position: absolute;
+                width: 5px;
+            }
+        }
     }
     .btnWrap{
         overflow: hidden;

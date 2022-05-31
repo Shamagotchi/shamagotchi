@@ -163,7 +163,7 @@ const Main = () => {
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>
-                    <Screen isMenuOn={isMenuOn} isNy={isNy} say={say} isSaying={isSaying} findMyGhost={findMyGhost} isPark={isPark} isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
+                    <Screen isNy={isNy} say={say} isSaying={isSaying} findMyGhost={findMyGhost} isPark={isPark} isMenuOn={isMenuOn} ToggleClass={ToggleClass} isLeft={isLeft} isRight={isRight} count={count} action={action} isActive={isActive} isStart={isStart}/>
                     {/* 버튼 */}
                     <div className="controlBtn_wrap">
                         <button type="button" className="left" onClick={(e) => trigger("left")}><span className="vh">left</span></button>

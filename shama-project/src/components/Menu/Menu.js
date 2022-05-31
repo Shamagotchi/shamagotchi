@@ -24,16 +24,25 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
         }
     }
     const onReset = () => {
-        findMyGhost.saying.length = 0
+        if(findMyGhost){
+            findMyGhost.saying.length = 0
+        }else{
+            alert("please connect your account to save")
+        }
     }
     const onDefault = () => {
-        findMyGhost.saying.push(...sayingArr)
+        if(findMyGhost){
+            findMyGhost.saying.push(...sayingArr)
+        }else{
+            alert("please connect your account to save")
+        }
     }
     useEffect(() => {
-        if(findMyGhost.saying.length < 0){
-            setIsVisible(false)
-        }else{
+
+        if(findMyGhost && findMyGhost.saying.length == 0){
             setIsVisible(true)
+        }else{
+            setIsVisible(false)
         }
     },)
     console.log(isVisible)
@@ -48,14 +57,16 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             <span className='mapText'>I can say...</span> 
             <ul className='sayingList'>
             {
-                findMyGhost && findMyGhost.saying.map((index,item) => <li key={index}>{findMyGhost.saying[item]}</li>)
+                findMyGhost && findMyGhost.saying.map((index,item) => <li key={index}>{findMyGhost.saying[item]}<button className='btnDel'><span className='vh'>delete</span></button></li>)
             }
             </ul>
             <div className='btnWrap'>
                 {
                     isVisible && <button type="button" className='btnDefault' onClick={onDefault}>Use Default</button>
                 }
-                <button type="button" className='btnReset' onClick={onReset} >Reset</button>
+                {
+                    !isVisible && <button type="button" className='btnReset' onClick={onReset} >Reset</button>
+                }
             </div>
         </div>
     );
