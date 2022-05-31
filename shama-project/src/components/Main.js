@@ -176,7 +176,7 @@ const Main = () => {
                         </Draggable>
                     }
                     {
-                        isRemove && <Activity say={say} setSay={setSay} findMyGhost={findMyGhost} isMenuOn={isMenuOn} menuActive={menuActive}/>
+                        isRemove && <Activity sayingArr={sayingArr} say={say} setSay={setSay} findMyGhost={findMyGhost} isMenuOn={isMenuOn} menuActive={menuActive}/>
                     }
                  
                 </div>
