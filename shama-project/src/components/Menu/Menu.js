@@ -16,6 +16,7 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             sayingText : value
         })
     }
+    // 문구 추가
     const onAdd = (e) => {
         if(findMyGhost){
             findMyGhost.saying.push(sayingText)
@@ -23,6 +24,7 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             alert("please connect your account to save")
         }
     }
+    // 문구 모두 삭제
     const onReset = () => {
         if(findMyGhost){
             findMyGhost.saying.length = 0
@@ -30,6 +32,7 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             alert("please connect your account to save")
         }
     }
+    // 문구 디폴트 
     const onDefault = () => {
         if(findMyGhost){
             findMyGhost.saying.push(...sayingArr)
@@ -44,6 +47,7 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             setIsVisible(false)
         }
     })
+    // 문구 삭제
     const onDelList = (id) => {
         if(findMyGhost){
             findMyGhost.saying.filter((data) => data.id !== id)
@@ -51,7 +55,17 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             alert("please connect your account to save")
         }
     }
-    console.log(isVisible)
+    // 저장된 상태값 불러오기 
+    useEffect(() => {
+        if(findMyGhost){
+            localStorage.getItem(findMyGhost.saying)
+        }
+    },[onAdd])
+    // 상태값 저장하기
+    useEffect(() => {
+        localStorage.setItem('findMyGhost.saying', findMyGhost.saying)
+    },[])
+
     return (
         <div className="menu">
             <Typed className="subject" strings={['Teach your ghost to say!']} showCursor={false}
@@ -63,7 +77,7 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             <span className='mapText'>I can say...</span> 
             <ul className='sayingList'>
             {
-                findMyGhost && findMyGhost.saying.map((index,item) => <li key={index}>{findMyGhost.saying[item]}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>)
+                findMyGhost ? findMyGhost.saying.map((index,item) => <li key={index}>{findMyGhost.saying[item]}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>) : sayingArr.map((index,item) => <li key={index}>{index}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>)
             }
             </ul>
             <div className='btnWrap'>
