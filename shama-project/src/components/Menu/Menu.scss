@@ -2,6 +2,7 @@
 .menu{
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     position: absolute;
     left: 3%;
     right: 3.3%;
@@ -11,9 +12,9 @@
     word-wrap: break-word;
     word-break: break-word;
     border-radius: 27px;
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    @supports not (backdrop-filter: blur(1px)){
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    @supports not (backdrop-filter: blur(2px)){
         background-color: rgba(0, 0, 0, 0.25);
     }
     .subject{

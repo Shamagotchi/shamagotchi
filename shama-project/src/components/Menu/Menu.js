@@ -18,8 +18,18 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
     }
     // 문구 추가
     const onAdd = (e) => {
+        e.preventDefault()
         if(findMyGhost){
-            findMyGhost.saying.push(sayingText)
+            if(!sayingText){
+                return
+            }else if(sayingArr.includes(sayingText)){
+                alert(`Ghost already knows "${sayingText}" !`)
+                return
+            }else{
+                alert(`Ghost is learning "${sayingText}"...`)
+                findMyGhost.saying.push(sayingText)
+                ref.current.value = ""
+            }
         }else{
             alert("please connect your account to save")
         }
@@ -48,12 +58,15 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
         }
     })
     // 문구 삭제
-    const onDelList = (id) => {
+    const onDelList = (index) => {
         if(findMyGhost){
-            findMyGhost.saying.filter((data) => data.id !== id)
+            // sayingText.filter((ghost) => ghost.length < 0)
+            // console.log(newSayingList)
         }else{
             alert("please connect your account to save")
         }
+        console.log(index)
+
     }
     // 저장된 상태값 불러오기 
     // useEffect(() => {
@@ -70,10 +83,10 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
         <div className="menu">
             <Typed className="subject" strings={['Teach your ghost to say!']} showCursor={false}
                     typeSpeed={80}/>
-            <div className="sayingWrap">
+            <form className="sayingWrap" onSubmit={onAdd}>
                 <input type="text" name="sayingText" maxLength="5" autoFocus={true} className="CustomText" onChange={changeVal} ref={ref}/>
                 <button type='button' className='btnAdd' onClick={onAdd}>ADD</button>
-            </div>
+            </form>
             <span className='mapText'>I can say...</span> 
             <ul className='sayingList'>
             {

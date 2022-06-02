@@ -14,7 +14,7 @@ const Screen = ({say, isSaying, isMenuOn, isPark, isNy, isLeft, isRight, action,
                 (isStart && isNy) ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
-                (isStart && !isMenuOn) ? <Avatar say={say} isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count} isSaying={isSaying}/> : null
+                (isStart) ? <Avatar say={say} isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count} isSaying={isSaying}/> : null
             }
         </div>
     );
