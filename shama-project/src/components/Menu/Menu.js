@@ -56,15 +56,15 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
         }
     }
     // 저장된 상태값 불러오기 
-    useEffect(() => {
-        if(findMyGhost){
-            localStorage.getItem(findMyGhost.saying)
-        }
-    },[onAdd])
+    // useEffect(() => {
+    //     if(findMyGhost){
+    //         localStorage.getItem(findMyGhost.saying)
+    //     }
+    // },[onAdd])
     // 상태값 저장하기
-    useEffect(() => {
-        localStorage.setItem('findMyGhost.saying', findMyGhost.saying)
-    },[])
+    // useEffect(() => {
+    //     localStorage.setItem('findMyGhost.saying', findMyGhost.saying)
+    // },[])
 
     return (
         <div className="menu">

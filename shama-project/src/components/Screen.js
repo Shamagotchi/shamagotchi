@@ -8,10 +8,10 @@ const Screen = ({say, isSaying, isMenuOn, isPark, isNy, isLeft, isRight, action,
     return (
         <div className="screen">
             {
-                (isStart && isPark && !isMenuOn) ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
+                (isStart && isPark) ? <Park isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
-                (isStart && isNy && !isMenuOn) ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
+                (isStart && isNy) ? <Ny isLeft={isLeft} isRight={isRight} count={count}/> : null
             }
             {
                 (isStart && !isMenuOn) ? <Avatar say={say} isLeft={isLeft} isRight={isRight} action={action} isStart={isStart} count={count} isSaying={isSaying}/> : null
