@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useCallback, useState } from 'react';
 import Typed from 'react-typed';
 import './Menu.scss'
 
@@ -16,8 +16,10 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             sayingText : value
         })
     }
+    const [ghostSaying, setGhostSaying] = useState(findMyGhost.saying)
+    const cloneSaying = [...ghostSaying]
     // 문구 추가
-    const onAdd = (e) => {
+    const onAdd = useCallback((e) => {
         e.preventDefault()
         if(findMyGhost){
             if(!sayingText){
@@ -25,15 +27,19 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             }else if(sayingArr.includes(sayingText)){
                 alert(`Ghost already knows "${sayingText}" !`)
                 return
-            }else{
+            }else if(ghostSaying.includes(sayingText)){
+                alert(`Ghost already knows "${sayingText}" !`)
+                return
+            }
+            else{
                 alert(`Ghost is learning "${sayingText}"...`)
-                findMyGhost.saying.push(sayingText)
+                ghostSaying.push(sayingText)
                 ref.current.value = ""
             }
         }else{
             alert("please connect your account to save")
         }
-    }
+    })
     // 문구 모두 삭제
     const onReset = () => {
         if(findMyGhost){
@@ -57,28 +63,42 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             setIsVisible(false)
         }
     })
+
+
     // 문구 삭제
-    const onDelList = (index) => {
+    const onDelList = useCallback((index) => {
         if(findMyGhost){
-            // sayingText.filter((ghost) => ghost.length < 0)
-            // console.log(newSayingList)
+            let filterWords = index.target.parentNode.innerText
+            let filterWord = filterWords.split("\n")[0]
+            window.confirm(`Do you want ghost to forget a word "${filterWord}" ?`)
+            setGhostSaying(
+                ghostSaying.filter((ghost) => ghost !== filterWord)
+            )
+            console.log(cloneSaying)
         }else{
             alert("please connect your account to save")
         }
-        console.log(index)
+    },[])
 
-    }
     // 저장된 상태값 불러오기 
     // useEffect(() => {
     //     if(findMyGhost){
-    //         localStorage.getItem(findMyGhost.saying)
+    //         localStorage.getItem(ghostSaying)
     //     }
-    // },[onAdd])
-    // 상태값 저장하기
-    // useEffect(() => {
-    //     localStorage.setItem('findMyGhost.saying', findMyGhost.saying)
     // },[])
 
+    // 상태값 저장하기
+    // useEffect(() => {
+    //     if(findMyGhost){
+    //         localStorage.setItem('ghostSaying', ghostSaying)
+    //     }
+    // },[onAdd])
+
+    // 상태값 삭제하기
+    // useEffect(() => {
+    //     localStorage.removeItem('ghostSaying', ghostSaying)
+    // },[onDelList])
+    
     return (
         <div className="menu">
             <Typed className="subject" strings={['Teach your ghost to say!']} showCursor={false}
@@ -90,7 +110,9 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             <span className='mapText'>I can say...</span> 
             <ul className='sayingList'>
             {
-                findMyGhost ? findMyGhost.saying.map((index,item) => <li key={index}>{findMyGhost.saying[item]}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>) : sayingArr.map((index,item) => <li key={index}>{index}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>)
+                findMyGhost ? cloneSaying.map((index,item) => 
+                <li key={index}>{cloneSaying[item]}<button className='btnDel' onClick={(index) => onDelList(index)}><span className='vh'>delete</span></button></li>)
+                 : sayingArr.map((index,item) => <li key={index}>{index}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>)
             }
             </ul>
             <div className='btnWrap'>
