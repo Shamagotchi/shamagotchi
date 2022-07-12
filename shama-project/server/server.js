@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.get('/', (req, res) => {
-    res.send(`This is Shamagotchi`);
+app.get('/api/host', (req, res) => {
+    res.send({ host : 'shama' });
 })
 
 app.listen(PORT, () => {
