@@ -17,7 +17,6 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
         })
     }
     const [ghostSaying, setGhostSaying] = useState(findMyGhost.saying)
-    const cloneSaying = [...ghostSaying]
     // 문구 추가
     const onAdd = useCallback((e) => {
         e.preventDefault()
@@ -35,6 +34,8 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
                 alert(`Ghost is learning "${sayingText}"...`)
                 ghostSaying.push(sayingText)
                 ref.current.value = ""
+                // 로컬 저장소 말풍선 문구 추가하기
+                localStorage.setItem('ghostSaying', ghostSaying)
             }
         }else{
             alert("please connect your account to save")
@@ -43,7 +44,7 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
     // 문구 모두 삭제
     const onReset = () => {
         if(findMyGhost){
-            findMyGhost.saying.length = 0
+            ghostSaying.length = 0
         }else{
             alert("please connect your account to save")
         }
@@ -51,13 +52,13 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
     // 문구 디폴트 
     const onDefault = () => {
         if(findMyGhost){
-            findMyGhost.saying.push(...sayingArr)
+            ghostSaying.push(...sayingArr)
         }else{
             alert("please connect your account to save")
         }
     }
     useEffect(() => {
-        if(findMyGhost && findMyGhost.saying.length == 0){
+        if(findMyGhost && ghostSaying.length == 0){
             setIsVisible(true)
         }else{
             setIsVisible(false)
@@ -66,38 +67,26 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
 
 
     // 문구 삭제
-    const onDelList = useCallback((index) => {
+    const onDelList = (index) => {
         if(findMyGhost){
             let filterWords = index.target.parentNode.innerText
             let filterWord = filterWords.split("\n")[0]
-            window.confirm(`Do you want ghost to forget a word "${filterWord}" ?`)
-            setGhostSaying(
-                ghostSaying.filter((ghost) => ghost !== filterWord)
-            )
-            console.log(cloneSaying)
+            if(window.confirm(`Do you want ghost to forget a word "${filterWord}" ?`)){
+                setGhostSaying(
+                    ghostSaying.filter((ghost) => ghost !== filterWord)
+                )
+                // 로컬 저장소 말풍선 문구 삭제하기
+                localStorage.removeItem('ghostSaying', ghostSaying)
+            }
         }else{
             alert("please connect your account to save")
         }
-    },[])
+    }
 
     // 저장된 상태값 불러오기 
-    // useEffect(() => {
-    //     if(findMyGhost){
-    //         localStorage.getItem(ghostSaying)
-    //     }
-    // },[])
-
-    // 상태값 저장하기
-    // useEffect(() => {
-    //     if(findMyGhost){
-    //         localStorage.setItem('ghostSaying', ghostSaying)
-    //     }
-    // },[onAdd])
-
-    // 상태값 삭제하기
-    // useEffect(() => {
-    //     localStorage.removeItem('ghostSaying', ghostSaying)
-    // },[onDelList])
+    // if(findMyGhost){
+    //     localStorage.getItem(ghostSaying)
+    // }
     
     return (
         <div className="menu">
@@ -110,8 +99,8 @@ const Menu = ({sayingArr, say, setSay, findMyGhost}) => {
             <span className='mapText'>I can say...</span> 
             <ul className='sayingList'>
             {
-                findMyGhost ? cloneSaying.map((index,item) => 
-                <li key={index}>{cloneSaying[item]}<button className='btnDel' onClick={(index) => onDelList(index)}><span className='vh'>delete</span></button></li>)
+                findMyGhost ? ghostSaying.map((item,index) => 
+                <li key={index}>{item}<button className='btnDel' onClick={(index) => onDelList(index)}><span className='vh'>delete</span></button></li>)
                  : sayingArr.map((index,item) => <li key={index}>{index}<button className='btnDel' onClick={onDelList}><span className='vh'>delete</span></button></li>)
             }
             </ul>
