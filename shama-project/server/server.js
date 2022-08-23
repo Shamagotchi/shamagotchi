@@ -8,12 +8,13 @@ const cors = require('cors');
 const db = require('./database/database')
 const PORT = process.env.PORT || 3001;
 const session = require('express-session')
+const mongoose = require('mongoose')
+const MongoDBStore = require("connect-mongo")(session);
 const passport = require('passport');
 const discordStrategy = require('./strategies/discordstrategy')
 // Routes
 const authRoute = require('./routes/auth')
 const dashboardRoute = require('./routes/dashboard')
-
 db.then(() => console.log('Connected to MongoDB,')).catch(err => console.log(err))
 
 app.use(express.json())
@@ -25,8 +26,10 @@ app.use(session({
         maxAge : 60000 * 60 * 24,
     },
     saveUninitialized : false,
-    name : 'discord.oauth2'
-}))
+    resave : false,
+    name : 'discord.oauth2',
+    store : new MongoDBStore({mongooseConnection : mongoose.connection})
+})) 
 
 //passport
 app.use(passport.initialize());
@@ -36,9 +39,11 @@ app.use(passport.session());
 app.use('/auth', authRoute)
 app.use('/dashboard', dashboardRoute)
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "..", "build", "index.html"));
-  });
+// app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+//   });
+
+app.use(express.static(path.join(__dirname, '../build')))
 
 //MySQL
 // app.get('/api', function(req,res){
@@ -48,10 +53,11 @@ app.get("/", (req, res) => {
 //     })
 // })
 
+
 function isAuthorized(req, res, next){
     if(req.user){
         console.log("User is logged in.")
-        res.redirect('/dashboard')
+        res.redirect('/')
     }
     else{
         console.log("User is not logged in.")
@@ -63,4 +69,4 @@ app.listen(PORT, () => {
     console.log(`Server On : http://localhost:${PORT}/`);
 })
 
-app.use(express.static(path.join(__dirname,'../build')))
+// app.use(express.static(path.join(__dirname,'../build')))

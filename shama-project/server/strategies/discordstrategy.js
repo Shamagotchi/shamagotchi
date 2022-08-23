@@ -21,13 +21,16 @@ passport.use(new DiscordStrategy({
 }, async (accessToken, refreshToken, profile, done) => {
     try{
         const user = await DiscordUser.findOne({discordId : profile.id})
-        if(user){
+        if(user){   
+            console.log("User exists.")
             done(null, user)
         }
         else{
+            console.log("User does not exist")
             const newUser = await DiscordUser.create({
                 discordId : profile.id,
-                username : profile.username
+                username : profile.username,
+                guilds : profile.guilds
             });
             const savedUser = await newUser.save();
             done(null, savedUser)

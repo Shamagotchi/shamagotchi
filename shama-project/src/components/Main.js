@@ -5,7 +5,7 @@ import './style.scss'
 import sound from './../audio/btn_sound.mp3'
 import Activity from './Menu/Activity';
 import GhostList from './../assets/api/GhostList';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 
 const Main = () => {
     const FrontImage = require('./../img/front2.png') // 샤고스 다마고치 이미지
@@ -21,12 +21,21 @@ const Main = () => {
     const [isSaying, setIsSaying] = useState(false)
     const [data, setData] = useState(GhostList)
     const [isNy, setNy] = useState(false)
-    const { Id } = useParams();
+    const { Id, login } = useParams();
     const findMyGhost = GhostList.find(item => {
         return item.id === Id
     })
     const sayingArr = ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
     const [say, setSay] = useState(sayingArr) 
+    const [backendData, setBackendData] = useState("LOGIN WITH DISCORD")
+    const [actionUrl, setActionUrl] = useState("/auth")
+    const location = useLocation()
+    const [userData, setUserData] = useState()
+    const [message, setMessage] = useState()
+    const [isLogin, setIsLogin] = useState(false)
+    const [isLogOut, setIsLogOut] = useState(false)
+    
+    
     //말풍선 이벤트
     useEffect(() => {
         let timer = setTimeout(() => {
@@ -86,6 +95,52 @@ const Main = () => {
         setNy(!isNy)
         setIsPark(!isPark)
     }
+
+    
+    // fetch discord 유저 데이터 
+    useEffect(() => {
+        fetch("http://localhost:3001/dashboard/settings").then(
+            response => response.json()
+        ).then((result) => 
+        setUserData(result.username),
+        )
+        
+        
+    })
+    
+    // login + logout 
+    useEffect(() => {
+        if(location.pathname == "/login"){
+            setBackendData("LOGOUT")
+            setActionUrl("/auth/logout")
+            setTimeout(() => {
+                setIsLogin(true)
+                setIsLogOut(false)
+            },2000)
+            setMessage(`${userData} has logged in`)
+            localStorage.setItem('userData', userData)
+            
+        }else if(location.pathname == "/logout"){
+            const getUserData = localStorage.getItem('userData')
+            setMessage(`${getUserData} has logged out`)
+            setBackendData("LOGIN WITH DISCORD")
+            setActionUrl("/auth")
+            setTimeout(() => {
+                setIsLogin(false)
+                setIsLogOut(true)
+            },2000)
+            // setTimeout(() => {
+            //     localStorage.removeItem('userData', userData)
+            // },3000)
+        }
+    })
+
+    //토스트 팝업 케이스 
+    useEffect(() => {
+        if(isLogin){
+            
+        }
+    })
 
     //효과음 재생
     // const playSound = useCallback(() => {
@@ -160,6 +215,10 @@ const Main = () => {
     } 
     return (
         <div className="wrapper" id='capture'>
+            <form action={actionUrl} method="get" className="login">
+                <button id="loginBtn" type="submit">{backendData}</button>
+            </form>
+            {(isLogin || isLogOut) && <p className={"tosterPopup " + (isLogOut && 'logout')}>{message}</p>}
             <div className="device">
                 <div className="imgWrap">
                     <img src={FrontImage} width="800" height="auto" className="deviceImg" alt="다마고치"/>

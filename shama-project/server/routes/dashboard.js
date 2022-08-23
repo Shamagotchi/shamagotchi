@@ -13,11 +13,15 @@ function isAuthorized(req, res, next){
 }
 
 router.get('/', isAuthorized, (req,res) => {
-    res.render(200);
+    res.render('/login', {
+        username : req.user.username,
+        discordId : req.user.discordId,
+        guilds : req.user.guilds
+    })
 })
 
-router.get('/settings', (req, res) => {
-    res.send(200)
+router.get('/settings', isAuthorized, (req,res) => {
+    res.send(req.user)
 })
 
 
