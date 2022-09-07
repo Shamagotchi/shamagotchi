@@ -22,19 +22,22 @@ const Main = () => {
     const [data, setData] = useState(GhostList)
     const [isNy, setNy] = useState(false)
     const { Id, login } = useParams();
-    const findMyGhost = GhostList.find(item => {
-        return item.id === Id
-    })
+    // const findMyGhost = GhostList.find(item => {
+    //     return item.id === Id
+    // })
     const sayingArr = ['Hey','Grrrr....','?','!!!!','WAAAH','Ptui','Ouch','Zzz','Ahem','YOU?','Love You','Fxxk']
     const [say, setSay] = useState(sayingArr) 
     const [backendData, setBackendData] = useState("LOGIN WITH DISCORD")
     const [actionUrl, setActionUrl] = useState("/auth")
     const location = useLocation()
-    const [userData, setUserData] = useState()
+    const [userName, setUserName] = useState()
+    const [userId, setUserId] = useState()
     const [message, setMessage] = useState()
     const [isLogin, setIsLogin] = useState(false)
     const [isLogOut, setIsLogOut] = useState(false)
-    
+    const findMyGhost = GhostList.find(item => {
+        return item.discordId === userId
+    })
     
     //말풍선 이벤트
     useEffect(() => {
@@ -44,13 +47,22 @@ const Main = () => {
 
         if(isSaying){
             if(findMyGhost){
-                setSay(data.map(item => item.id === Id && 
-                    findMyGhost.saying[Math.floor(Math.random() * findMyGhost.saying.length)]
-                ))
+                setSay(findMyGhost.saying[Math.floor(Math.random() * findMyGhost.saying.length)])
             }else{
                 setSay(sayingArr[Math.floor(Math.random() * sayingArr.length)])
             }
         }
+
+        // 해쉬라우팅 버전
+        // if(isSaying){
+        //     if(findMyGhost){
+        //         setSay(data.map(item => item.id === Id && 
+        //             findMyGhost.saying[Math.floor(Math.random() * findMyGhost.saying.length)]
+        //         ))
+        //     }else{
+        //         setSay(sayingArr[Math.floor(Math.random() * sayingArr.length)])
+        //     }
+        // }
         
         return () => {
             clearTimeout(timer)
@@ -101,10 +113,10 @@ const Main = () => {
     useEffect(() => {
         fetch("http://localhost:3001/dashboard/settings").then(
             response => response.json()
-        ).then((result) => 
-        setUserData(result.username),
-        )
-        
+        ).then((result) =>{ 
+            setUserId(result.discordId);
+        setUserName(result.username)
+        })
         
     })
     
@@ -117,11 +129,11 @@ const Main = () => {
                 setIsLogin(true)
                 setIsLogOut(false)
             },2000)
-            setMessage(`${userData} has logged in`)
-            localStorage.setItem('userData', userData)
+            setMessage(`${userName} has logged in`)
+            localStorage.setItem('userName', userName)
             
         }else if(location.pathname == "/logout"){
-            const getUserData = localStorage.getItem('userData')
+            const getUserData = localStorage.getItem('userName')
             setMessage(`${getUserData} has logged out`)
             setBackendData("LOGIN WITH DISCORD")
             setActionUrl("/auth")
@@ -130,7 +142,7 @@ const Main = () => {
                 setIsLogOut(true)
             },2000)
             // setTimeout(() => {
-            //     localStorage.removeItem('userData', userData)
+            //     localStorage.removeItem('userName', userName)
             // },3000)
         }
     })
